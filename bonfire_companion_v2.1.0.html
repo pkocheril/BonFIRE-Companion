@@ -419,15 +419,15 @@ function mapColor(v,n){
 }
 
 // ═══════════════════════════════════
-// DATA ACCESS — layout [Y,X,T]
-// idx = y*(nX*nT) + x*nT + t
+// DATA ACCESS — layout [T, Y, X]
+// idx = t*(nY*nX) + y*nX + x
 // ═══════════════════════════════════
-function cv(cube,y,x,t){ return cube[y*S.nX*S.nT + x*S.nT + t]; }
+function cv(cube,y,x,t){ return cube[t*S.nY*S.nX + y*S.nX + x]; }
 
 function frameSlice(cube,t){
-  const out=new Float64Array(S.nY*S.nX);
-  for(let y=0;y<S.nY;y++) for(let x=0;x<S.nX;x++) out[y*S.nX+x]=cv(cube,y,x,t);
-  return out;
+  // Returns a Float64Array of length nY*nX for frame t
+  // Since the data is already [T,Y,X] row-major, frame t is a contiguous block
+  return cube.slice(t*S.nY*S.nX, (t+1)*S.nY*S.nX);
 }
 
 function spatialAvg(cube,roi){
@@ -1016,6 +1016,7 @@ function exportCubeCSV(){
   const hdr=[]; for(let y=0;y<nY;y++) for(let x=0;x<nX;x++) hdr.push(`y${y}x${x}`);
   const rows=[['frame','stage_mm','delay_ps',...hdr].join(',')];
   for(let t=0;t<nT;t++){
+    // frameSlice is now a direct slice so this is efficient too
     const vals=[]; for(let y=0;y<nY;y++) for(let x=0;x<nX;x++) vals.push(cv(cube,y,x,t));
     rows.push(`${t+1},${S.tList[t]},${S.timeAxis?S.timeAxis[t].toFixed(4):''},${vals.join(',')}`);
   }
