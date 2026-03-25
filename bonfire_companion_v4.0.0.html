@@ -16,8 +16,6 @@
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'Space Mono',monospace;background:var(--bg);color:var(--text);height:100vh;overflow:hidden;font-size:12px;display:flex;flex-direction:column;}
-
-/* Header */
 header{display:flex;align-items:center;justify-content:space-between;padding:10px 18px;border-bottom:1px solid var(--border);background:var(--panel);flex-shrink:0;}
 .logo{display:flex;align-items:baseline;gap:8px;}
 .logo h1{font-family:'Syne',sans-serif;font-weight:800;font-size:18px;letter-spacing:.06em;}
@@ -26,39 +24,33 @@ header{display:flex;align-items:center;justify-content:space-between;padding:10p
 .pill{padding:3px 10px;border-radius:20px;font-size:9px;letter-spacing:.1em;background:var(--panel2);border:1px solid var(--border2);color:var(--muted);display:flex;align-items:center;gap:5px;}
 .pill .dot{width:5px;height:5px;border-radius:50%;background:var(--muted2);transition:all .3s;}
 .pill.live .dot{background:var(--accent4);box-shadow:0 0 5px var(--accent4);}
-
-/* Layout */
 .app{display:flex;flex:1;min-height:0;}
 
 /* Sidebar */
-.sidebar{width:248px;flex-shrink:0;background:var(--panel);border-right:1px solid var(--border);display:flex;flex-direction:column;}
-.sb-head{padding:9px 12px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:5px;}
-.sb-title{font-family:'Syne',sans-serif;font-weight:700;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);}
-.sb-btns{display:flex;gap:4px;}
+.sidebar{width:252px;flex-shrink:0;background:var(--panel);border-right:1px solid var(--border);display:flex;flex-direction:column;}
+.sb-head{padding:8px 12px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:5px;}
+.sb-title{font-family:'Syne',sans-serif;font-weight:700;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);flex:1;}
 .btn-load{padding:4px 9px;background:var(--accent);color:#000;font-family:'Space Mono',monospace;font-size:9px;font-weight:700;border:none;border-radius:3px;cursor:pointer;}
 .btn-load:hover{opacity:.82;}
-.btn-clr{padding:4px 7px;background:var(--panel2);border:1px solid var(--border2);color:var(--muted);font-family:'Space Mono',monospace;font-size:9px;border-radius:3px;cursor:pointer;}
-.btn-clr:hover{border-color:var(--accent);color:var(--accent);}
-
+.btn-sm-icon{padding:4px 7px;background:var(--panel2);border:1px solid var(--border2);color:var(--muted);font-family:'Space Mono',monospace;font-size:9px;border-radius:3px;cursor:pointer;white-space:nowrap;}
+.btn-sm-icon:hover{border-color:var(--accent);color:var(--accent);}
 .drop-zone{margin:7px;border:1px dashed var(--border2);border-radius:5px;padding:9px 8px;text-align:center;color:var(--muted);font-size:9px;line-height:1.7;cursor:pointer;transition:all .2s;}
 .drop-zone:hover,.drop-zone.over{border-color:var(--accent);color:var(--accent);background:rgba(255,107,53,.04);}
 .drop-zone .dzi{font-size:16px;display:block;margin-bottom:2px;}
-
 .ch-row{display:flex;gap:5px;padding:7px 10px;border-bottom:1px solid var(--border);}
 .ch-btn{flex:1;padding:5px;border-radius:3px;border:1px solid var(--muted2);background:transparent;color:var(--muted);font-family:'Space Mono',monospace;font-size:9px;cursor:pointer;transition:all .15s;}
 .ch-btn.ch1.on{border-color:var(--ch1);color:var(--ch1);background:rgba(56,189,248,.07);}
 .ch-btn.ch2.on{border-color:var(--ch2);color:var(--ch2);background:rgba(255,107,53,.07);}
-
+.sort-row{display:flex;gap:4px;padding:5px 10px;border-bottom:1px solid var(--border);align-items:center;}
+.sort-lbl{font-size:8px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;}
+select.sort-sel{flex:1;padding:3px 5px;background:var(--panel2);border:1px solid var(--border2);border-radius:3px;color:var(--text);font-family:'Space Mono',monospace;font-size:8px;outline:none;}
 .tab-row{display:flex;border-bottom:1px solid var(--border);}
 .tab-btn{flex:1;padding:7px 4px;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);cursor:pointer;background:none;border:none;border-bottom:2px solid transparent;transition:all .15s;}
 .tab-btn.on{color:var(--accent);border-bottom-color:var(--accent);}
-
 .file-list{flex:1;overflow-y:auto;padding:5px;}
 .file-list::-webkit-scrollbar{width:3px;}
 .file-list::-webkit-scrollbar-thumb{background:var(--muted2);border-radius:2px;}
-
-/* Dataset item — grouped card */
-.ds-card{background:var(--panel2);border:1px solid var(--border);border-radius:5px;margin-bottom:5px;cursor:pointer;transition:all .15s;overflow:hidden;}
+.ds-card{background:var(--panel2);border:1px solid var(--border);border-radius:5px;margin-bottom:5px;cursor:pointer;transition:all .15s;}
 .ds-card:hover{border-color:var(--border2);}
 .ds-card.active{border-color:var(--accent);background:rgba(255,107,53,.06);}
 .ds-head{display:flex;align-items:center;gap:6px;padding:6px 8px;}
@@ -71,10 +63,6 @@ header{display:flex;align-items:center;justify-content:space-between;padding:10p
 .ds-tag.tl{background:rgba(167,139,250,.15);color:var(--accent3);border:1px solid rgba(167,139,250,.25);}
 .ds-tag.meta{background:rgba(52,211,153,.15);color:var(--accent4);border:1px solid rgba(52,211,153,.25);}
 .ds-tag.miss{background:rgba(82,88,112,.1);color:var(--muted);border:1px solid var(--border);}
-
-.fl-glbl{font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:5px 5px 2px;}
-
-/* Spectrum tab list */
 .spec-row{display:flex;align-items:center;gap:5px;font-size:9px;color:var(--muted);margin-bottom:4px;}
 .spec-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
 .spec-name{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
@@ -93,19 +81,18 @@ select.ctl,input.ctl{padding:3px 5px;background:var(--panel2);border:1px solid v
 select.ctl:focus,input.ctl:focus{border-color:var(--accent);}
 input[type=range].ctl{-webkit-appearance:none;width:80px;height:2px;background:var(--panel3);border-radius:2px;padding:0;border:none;}
 input[type=range].ctl::-webkit-slider-thumb{-webkit-appearance:none;width:10px;height:10px;border-radius:50%;background:var(--accent);cursor:pointer;}
-.fr-lbl{font-size:9px;color:var(--accent);min-width:50px;}
+.fr-lbl{font-size:9px;color:var(--accent);min-width:55px;}
 .sp{flex:1;}
 .sm-btn{padding:3px 8px;background:var(--panel2);border:1px solid var(--border2);border-radius:3px;color:var(--muted);font-family:'Space Mono',monospace;font-size:8px;cursor:pointer;transition:all .15s;white-space:nowrap;}
 .sm-btn:hover{border-color:var(--accent3);color:var(--accent3);}
 .sm-btn.danger:hover{border-color:var(--accent);color:var(--accent);}
 .sm-btn.go{border-color:var(--accent4);color:var(--accent4);background:rgba(52,211,153,.06);}
 .sm-btn.go:hover{background:rgba(52,211,153,.12);}
+.sm-btn.active-mode{border-color:var(--accent3);color:var(--accent3);background:rgba(167,139,250,.08);}
 
-/* Image area — key fix: roiCanvas position tracks imgCanvas */
 .image-area{flex:1;display:flex;min-height:0;}
 .canvas-wrap{flex:1;display:flex;align-items:center;justify-content:center;background:#040408;overflow:hidden;position:relative;}
 #imgCanvas{image-rendering:pixelated;cursor:crosshair;display:block;position:relative;z-index:1;}
-/* roiCanvas is positioned absolutely to match imgCanvas exactly via JS */
 #roiCanvas{position:absolute;pointer-events:none;z-index:2;image-rendering:pixelated;}
 .ov-tl{position:absolute;top:7px;left:7px;display:flex;flex-direction:column;gap:2px;pointer-events:none;z-index:3;}
 .ov-br{position:absolute;bottom:7px;right:7px;pointer-events:none;z-index:3;}
@@ -114,7 +101,6 @@ input[type=range].ctl::-webkit-slider-thumb{-webkit-appearance:none;width:10px;h
 #cbCanvas{width:14px;flex:1;border-radius:2px;min-height:40px;}
 .cb-lbl{font-size:8px;color:var(--muted);}
 
-/* Trace */
 .trace-row{flex:1;display:flex;flex-direction:column;min-height:0;}
 .trace-area{flex:1;padding:8px 12px;min-height:0;position:relative;}
 #traceChart{width:100%!important;height:100%!important;}
@@ -128,117 +114,107 @@ input[type=range].ctl::-webkit-slider-thumb{-webkit-appearance:none;width:10px;h
 .rp-head{padding:8px 13px;}
 .rp-title{font-family:'Syne',sans-serif;font-weight:700;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
 .rp-body{padding:0 13px 11px;}
-
 .stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px;}
 .stat-box{background:var(--panel2);border:1px solid var(--border);border-radius:4px;padding:6px 8px;}
 .stat-lbl{font-size:8px;color:var(--muted);letter-spacing:.08em;margin-bottom:1px;}
 .stat-val{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;}
 .a1{color:var(--accent)}.a2{color:var(--accent2)}.a3{color:var(--accent3)}.a4{color:var(--accent4)}
-
 .roi-row{display:flex;align-items:center;gap:4px;margin-bottom:4px;}
 .roi-lbl{font-size:9px;color:var(--muted);width:12px;}
 input.roi-inp{width:42px;padding:3px 4px;background:var(--panel2);border:1px solid var(--border2);border-radius:3px;color:var(--text);font-family:'Space Mono',monospace;font-size:9px;text-align:center;outline:none;}
 input.roi-inp:focus{border-color:var(--accent3);}
 .roi-sep{color:var(--muted);font-size:9px;}
 .note{font-size:8px;color:var(--muted);line-height:1.5;margin-top:3px;}
-
 .meta-tbl{width:100%;border-collapse:collapse;}
 .meta-tbl tr{border-bottom:1px solid var(--border);}
 .meta-tbl tr:last-child{border-bottom:none;}
 .meta-tbl td{padding:3px 0;font-size:9px;vertical-align:top;}
 .meta-tbl td:first-child{color:var(--muted);width:48%;padding-right:5px;font-size:8px;}
 #levanteCanvas{width:100%;height:65px;border-radius:3px;display:block;}
-
 .freq-row{display:flex;align-items:center;gap:5px;margin-bottom:5px;}
 .freq-lbl{font-size:8px;color:var(--muted);white-space:nowrap;}
 input.freq-val{flex:1;padding:3px 5px;background:var(--panel2);border:1px solid var(--border2);border-radius:3px;color:var(--accent);font-family:'Space Mono',monospace;font-size:9px;text-align:right;outline:none;}
 input.freq-val:focus{border-color:var(--accent);}
 .freq-unit{font-size:8px;color:var(--muted);}
-
-/* Spectrum right panel */
 .spec-stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-bottom:8px;}
 #irPowerCanvas{width:100%;height:60px;border-radius:3px;display:block;margin-top:6px;}
-
-/* Export */
 .exp-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px;}
 .exp-btn{padding:7px 4px;background:var(--panel2);border:1px solid var(--border);border-radius:4px;color:var(--text);font-family:'Space Mono',monospace;font-size:8px;cursor:pointer;text-align:center;transition:all .15s;display:flex;flex-direction:column;align-items:center;gap:2px;}
 .exp-btn:hover:not(:disabled){border-color:var(--accent);color:var(--accent);background:rgba(255,107,53,.06);}
 .exp-btn:disabled{opacity:.3;cursor:not-allowed;}
 .exp-btn .ei{font-size:12px;}
 .exp-full{grid-column:1/-1;flex-direction:row;justify-content:center;gap:5px;padding:7px;}
-
 .notif{position:fixed;bottom:14px;right:14px;padding:7px 12px;background:var(--panel);border:1px solid var(--accent4);border-radius:4px;font-size:9px;color:var(--accent4);transform:translateY(50px);opacity:0;transition:all .22s;z-index:999;}
 .notif.on{transform:translateY(0);opacity:1;}
 </style>
 </head>
 <body>
-
 <header>
-  <div class="logo"><span>🔥</span><h1>BonFIRE</h1><span class="sub">Companion v3</span></div>
+  <div class="logo"><span>🔥</span><h1>BonFIRE</h1><span class="sub">Companion v4</span></div>
   <div class="pills">
     <div class="pill" id="datasetPill"><div class="dot"></div><span id="datasetLbl">No data</span></div>
     <div class="pill live"><div class="dot"></div><span>Ready</span></div>
   </div>
 </header>
-
 <div class="app">
 
-<!-- ── LEFT SIDEBAR ── -->
-<div class="sidebar">
+<!-- SIDEBAR -->
+<div class="sidebar" id="sidebarEl">
   <div class="sb-head">
     <span class="sb-title">Datasets</span>
-    <div class="sb-btns">
-      <button class="btn-load" onclick="document.getElementById('fp').click()">＋ Load</button>
-      <button class="btn-clr" onclick="clearAll()" title="Clear all files">✕</button>
-    </div>
+    <button class="btn-load" onclick="document.getElementById('fp').click()">＋ Load</button>
+    <button class="btn-sm-icon" onclick="clearAll()" title="Clear all">✕</button>
   </div>
   <input type="file" id="fp" multiple accept=".raw,.txt" style="display:none" onchange="handlePicked(event)">
-
-  <div class="drop-zone" id="dz">
-    <span class="dzi">📂</span>
-    Drop files or folder<br>(.raw · .txt)
-  </div>
-
+  <div class="drop-zone" id="dz"><span class="dzi">📂</span>Drop files or folder<br>(.raw · .txt)</div>
   <div class="ch-row">
     <button class="ch-btn ch1" id="ch1Btn" onclick="setCh(1)">CH1 · PMT</button>
     <button class="ch-btn ch2 on" id="ch2Btn" onclick="setCh(2)">CH2 · LIA</button>
   </div>
-
+  <div class="sort-row">
+    <span class="sort-lbl">Sort</span>
+    <select class="sort-sel" id="sortSel" onchange="renderDatasetList()">
+      <option value="time">Time (XYZT)</option>
+      <option value="freq">IR Frequency</option>
+      <option value="name">Filename</option>
+    </select>
+  </div>
   <div class="tab-row">
     <button class="tab-btn on" id="tbFiles" onclick="setSbTab('files')">Files</button>
     <button class="tab-btn"   id="tbSpec"  onclick="setSbTab('spec')">Spectrum</button>
   </div>
-
   <div id="pFiles" class="file-list">
-    <div id="dsList">
-      <div style="display:flex;flex-direction:column;align-items:center;height:80px;justify-content:center;color:var(--muted);font-size:9px;gap:4px"><span>📁</span><span>No datasets loaded</span></div>
-    </div>
+    <div id="dsList"><div style="display:flex;flex-direction:column;align-items:center;height:80px;justify-content:center;color:var(--muted);font-size:9px;gap:4px"><span>📁</span><span>No datasets loaded</span></div></div>
   </div>
-
   <div id="pSpec" class="file-list" style="display:none">
     <div style="padding:0 0 6px">
       <button class="sm-btn go" style="width:100%;text-align:center;padding:6px" onclick="buildSpectrumFromDatasets()">⚡ Build from all datasets</button>
     </div>
-    <div class="fl-glbl">Points</div>
+    <div style="font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:4px 4px 2px">Points</div>
     <div id="specList"></div>
     <div style="display:flex;gap:5px;padding:5px 0 3px">
       <button class="sm-btn go" onclick="renderSpectrumChart()">Plot</button>
-      <button class="sm-btn" onclick="toggleNormalize()">Normalize IR</button>
+      <button class="sm-btn" id="normBtn" onclick="toggleNormalize()">Norm IR</button>
       <button class="sm-btn danger" onclick="clearSpec()">Clear</button>
     </div>
-    <div class="note" style="padding-top:2px">Auto-built on folder drop. Frequency from XYZT (DFG 825–1900 cm⁻¹, else Idler). Toggle "Normalize IR" to divide by IR power.</div>
+    <div class="note" style="padding-top:2px">Auto-built on folder drop. Freq auto-selected (DFG if 825–1900 cm⁻¹, else Idler). "Norm IR" divides by IR power.</div>
   </div>
 </div>
 
-<!-- ── CENTER ── -->
-<div class="center">
-  <!-- Image -->
+<!-- CENTER -->
+<div class="center" id="centerEl">
   <div class="image-row">
-    <div class="sec-bar">
-      <span class="sec-lbl">Image</span>
-      <div class="cg"><span class="cl">Frame</span>
+    <div class="sec-bar" id="imgBar">
+      <span class="sec-lbl" id="imgBarLabel">Image</span>
+      <!-- Time-trace mode scrubber -->
+      <div id="traceSliderGroup" class="cg"><span class="cl">Frame</span>
         <input type="range" class="ctl" id="fslider" min="0" max="0" value="0" oninput="gotoFrame(this.value)">
         <span class="fr-lbl" id="frLbl">— / —</span>
+      </div>
+      <!-- Spectrum mode scrubber -->
+      <div id="specSliderGroup" class="cg" style="display:none"><span class="cl">Freq</span>
+        <input type="range" class="ctl" id="specSlider" min="0" max="0" value="0" oninput="gotoSpecFrame(this.value)">
+        <span class="fr-lbl" id="specFrameLbl">— / —</span>
       </div>
       <div class="cg"><span class="cl">Cmap</span>
         <select class="ctl" id="cmSel" onchange="renderImg()">
@@ -269,9 +245,7 @@ input.freq-val:focus{border-color:var(--accent);}
           <div class="ov-chip" id="ovT">T = —</div>
           <div class="ov-chip" id="ovDt">Δt = — ps</div>
         </div>
-        <div class="ov-br">
-          <div class="ov-chip" id="ovPx" style="display:none"></div>
-        </div>
+        <div class="ov-br"><div class="ov-chip" id="ovPx" style="display:none"></div></div>
       </div>
       <div class="cb-col">
         <span class="cb-lbl" id="cbMax">—</span>
@@ -281,38 +255,54 @@ input.freq-val:focus{border-color:var(--accent);}
     </div>
   </div>
 
-  <!-- Trace -->
   <div class="trace-row">
-    <div class="sec-bar">
-      <span class="sec-lbl">Trace</span>
-      <div class="cg"><span class="cl">Avg</span>
-        <select class="ctl" id="avgSel" onchange="updateTrace()">
-          <option value="all">All pixels</option><option value="roi">ROI</option>
-        </select>
+    <div class="sec-bar" id="traceBar">
+      <span class="sec-lbl" id="traceBarLabel">Trace</span>
+      <!-- Time trace controls -->
+      <div id="timeTraceControls" style="display:contents">
+        <div class="cg"><span class="cl">Avg</span>
+          <select class="ctl" id="avgSel" onchange="updateTrace()">
+            <option value="all">All pixels</option><option value="roi">ROI</option>
+          </select>
+        </div>
+        <div class="cg"><span class="cl">X</span>
+          <select class="ctl" id="xaxSel" onchange="updateTrace()">
+            <option value="ps">Delay (ps)</option><option value="mm">Stage (mm)</option><option value="idx">Index</option>
+          </select>
+        </div>
+        <div class="cg"><span class="cl">Y</span>
+          <select class="ctl" id="logSel" onchange="updateTrace()">
+            <option value="lin">Linear</option><option value="log">Log</option>
+          </select>
+        </div>
       </div>
-      <div class="cg"><span class="cl">X</span>
-        <select class="ctl" id="xaxSel" onchange="updateTrace()">
-          <option value="ps">Delay (ps)</option><option value="mm">Stage (mm)</option><option value="idx">Index</option>
-        </select>
-      </div>
-      <div class="cg"><span class="cl">Y</span>
-        <select class="ctl" id="logSel" onchange="updateTrace()">
-          <option value="lin">Linear</option><option value="log">Log</option>
-        </select>
+      <!-- Spectrum trace controls -->
+      <div id="specTraceControls" style="display:none">
+        <div class="cg"><span class="cl">Avg</span>
+          <select class="ctl" id="specAvgSel" onchange="updateSpecTrace()">
+            <option value="all">All pixels</option><option value="roi">ROI</option>
+          </select>
+        </div>
+        <div class="cg"><span class="cl">Y</span>
+          <select class="ctl" id="specLogSel" onchange="updateSpecTrace()">
+            <option value="lin">Linear</option><option value="log">Log</option>
+          </select>
+        </div>
       </div>
       <div class="sp"></div>
-      <button class="sm-btn go" onclick="retainTrace()">Retain trace</button>
+      <button class="sm-btn go" id="retainBtn" onclick="retainTrace()">Retain</button>
       <button class="sm-btn danger" onclick="clearTraces()">Clear all</button>
+      <button class="sm-btn" id="modeBtn" onclick="toggleMode()" title="Switch between time trace and spectrum view">⇄ Mode</button>
+      <button class="sm-btn" onclick="exportTraceCSV()">CSV</button>
+      <button class="sm-btn" onclick="exportTracePNG()">PNG</button>
     </div>
     <div class="trace-area"><canvas id="traceChart"></canvas></div>
   </div>
 </div>
 
-<!-- ── RIGHT PANEL ── -->
-<div class="rpanel">
+<!-- RIGHT PANEL -->
+<div class="rpanel" id="rpanelEl">
   <div class="rp-scroll">
-
-    <!-- Single-dataset view (shown when Files tab active) -->
     <div id="rpSingle">
       <div class="rp-sec">
         <div class="rp-head"><span class="rp-title">Statistics</span></div>
@@ -327,7 +317,6 @@ input.freq-val:focus{border-color:var(--accent);}
           </div>
         </div>
       </div>
-
       <div class="rp-sec">
         <div class="rp-head"><span class="rp-title">ROI</span></div>
         <div class="rp-body">
@@ -343,10 +332,9 @@ input.freq-val:focus{border-color:var(--accent);}
             <span class="roi-sep">–</span>
             <input type="number" class="roi-inp" id="rY2" placeholder="—" min="0" oninput="onRoiInput()">
           </div>
-          <div class="note">Draw on image or enter pixel coords. Set Avg → ROI to use.</div>
+          <div class="note">Draw on image or type coords. Set Avg → ROI to use.</div>
         </div>
       </div>
-
       <div class="rp-sec">
         <div class="rp-head"><span class="rp-title">Frequency Override</span></div>
         <div class="rp-body">
@@ -355,20 +343,17 @@ input.freq-val:focus{border-color:var(--accent);}
             <input type="number" class="freq-val" id="freqOv" placeholder="auto" step="0.1" oninput="updateStats()">
             <span class="freq-unit">cm⁻¹</span>
           </div>
-          <div class="note">Blank = auto from XYZT.txt.<br>DFG used if 825–1900 cm⁻¹, else Idler.</div>
+          <div class="note">Blank = auto (DFG if 825–1900, else Idler).</div>
         </div>
       </div>
-
       <div class="rp-sec">
         <div class="rp-head"><span class="rp-title">Experiment Info</span></div>
         <div class="rp-body" id="metaBody"><p class="note">Load XYZT.txt to view.</p></div>
       </div>
-
       <div class="rp-sec" id="levSec" style="display:none">
         <div class="rp-head"><span class="rp-title">Levante Spectrum</span></div>
         <div class="rp-body"><canvas id="levanteCanvas"></canvas></div>
       </div>
-
       <div class="rp-sec">
         <div class="rp-head"><span class="rp-title">Export</span></div>
         <div class="rp-body">
@@ -381,8 +366,6 @@ input.freq-val:focus{border-color:var(--accent);}
         </div>
       </div>
     </div>
-
-    <!-- Spectrum view (shown when Spectrum tab active) -->
     <div id="rpSpectrum" style="display:none">
       <div class="rp-sec">
         <div class="rp-head"><span class="rp-title">Spectrum Summary</span></div>
@@ -399,7 +382,6 @@ input.freq-val:focus{border-color:var(--accent);}
           <canvas id="irPowerCanvas"></canvas>
         </div>
       </div>
-
       <div class="rp-sec">
         <div class="rp-head"><span class="rp-title">Export</span></div>
         <div class="rp-body">
@@ -411,38 +393,46 @@ input.freq-val:focus{border-color:var(--accent);}
         </div>
       </div>
     </div>
-
   </div>
 </div>
 
 </div><!-- app -->
 <div class="notif" id="notif"></div>
-<input type="file" id="fp" multiple accept=".raw,.txt" style="display:none" onchange="handlePicked(event)">
 
 <script>
-// ═══════════════════════════════
+// ═══════════════════════════════════════════════════════════
 // STATE
-// ═══════════════════════════════
+// ═══════════════════════════════════════════════════════════
 const S={
-  ch:2,
-  // Active dataset
-  ch1:null, ch2:null,
+  ch:2, mode:'trace',          // 'trace' | 'spectrum'
+  // Active dataset fields
+  ch1:null, ch2:null,          // raw Float64Array
   nT:0, nY:0, nX:0,
-  tList:null, timeAxis:null, peakIdx:0,
+  tList:null,                  // raw stage positions (may have repeats)
+  tUnique:null,                // deduplicated + averaged cube Float64Array [T_uniq,Y,X]
+  tUniqueList:null,            // unique T values
+  timeAxis:null,               // delay ps, zero at peak
+  peakIdx:0,
   globalMin:0, globalMax:1,
   metadata:null, frame:0,
   roi:null, roiDrag:null,
-  retained:[], traceChart:null, specChart:null,
-  // Dataset registry: {id, basename, ch1:{arr,name}, ch2:{arr,name}, tList:{arr}, meta:{obj}, nT,nY,nX}
+  retained:[], traceChart:null,
+  // Spectrum mode
+  specDatasets:[],             // ordered list of {ds, freq, bonfire_img [nY,nX]}
+  specFrame:0,                 // index into specDatasets for image view
+  specRetained:[],
+  // Dataset registry
   datasets:[], activeDs:null,
-  // Spectrum
   specPoints:[], normalizeIR:false, sbTab:'files',
 };
-const PAL=['#ff6b35','#38bdf8','#a78bfa','#34d399','#fbbf24','#f472b6','#22d3ee','#fb7185'];
 
-// ═══════════════════════════════
+// Live trace color cycles through PAL starting at index 1, so it's never same as first retained (index 0)
+const PAL=['#a78bfa','#ff6b35','#38bdf8','#34d399','#fbbf24','#f472b6','#22d3ee','#fb7185'];
+// PAL[0] = purple for live; PAL[1..] for retained
+
+// ═══════════════════════════════════════════════════════════
 // COLORMAPS
-// ═══════════════════════════════
+// ═══════════════════════════════════════════════════════════
 const CMS={
   inferno:[[0,0,4],[40,11,84],[101,21,110],[159,42,99],[212,72,66],[245,125,21],[252,191,73],[252,255,164]],
   viridis:[[68,1,84],[59,82,139],[33,144,140],[93,200,98],[253,231,37]],
@@ -458,38 +448,60 @@ function mapColor(v,n){
   return[a[0]+f*(b[0]-a[0]),a[1]+f*(b[1]-a[1]),a[2]+f*(b[2]-a[2])];
 }
 
-// ═══════════════════════════════
-// DATA ACCESS — [T,Y,X] row-major
-// idx = t*(nY*nX) + y*nX + x
-// ═══════════════════════════════
-function cv(cube,y,x,t){return cube[t*S.nY*S.nX+y*S.nX+x];}
-function frameSlice(cube,t){return cube.slice(t*S.nY*S.nX,(t+1)*S.nY*S.nX);}
-function spatialAvg(cube,roi){
+// ═══════════════════════════════════════════════════════════
+// DATA ACCESS — [T,Y,X] row-major: idx = t*(nY*nX) + y*nX + x
+// ═══════════════════════════════════════════════════════════
+function cv(cube,nY,nX,y,x,t){return cube[t*nY*nX+y*nX+x];}
+function cvS(cube,y,x,t){return cube[t*S.nY*S.nX+y*S.nX+x];}
+function frameSliceS(cube,t){return cube.slice(t*S.nY*S.nX,(t+1)*S.nY*S.nX);}
+
+function spatialAvgS(cube,roi){
   const{nT,nY,nX}=S;
   const x1=roi?Math.max(0,roi.x1):0,x2=roi?Math.min(nX-1,roi.x2):nX-1;
   const y1=roi?Math.max(0,roi.y1):0,y2=roi?Math.min(nY-1,roi.y2):nY-1;
   const tr=new Float64Array(nT),n=(x2-x1+1)*(y2-y1+1);
   for(let t=0;t<nT;t++){
-    let s=0;
-    for(let y=y1;y<=y2;y++) for(let x=x1;x<=x2;x++) s+=cv(cube,y,x,t);
+    let s=0; for(let y=y1;y<=y2;y++) for(let x=x1;x<=x2;x++) s+=cvS(cube,y,x,t);
     tr[t]=s/n;
   }
   return tr;
 }
-function activeCube(){return S.ch===2?S.ch2:S.ch1;}
 
-// ═══════════════════════════════
-// DATASET REGISTRY
-// ═══════════════════════════════
-// Each dataset is keyed by basename (everything before _CH1.raw / _CH2.raw / _Tlist.txt / _XYZT.txt)
-function getBasename(name){
-  return name
-    .replace(/_?CH[12]\.raw$/i,'')
-    .replace(/_?Tlist\.txt$/i,'')
-    .replace(/_?XYZT\.txt$/i,'')
-    .replace(/\.raw$/i,'');
+// Compute spatially-averaged trace on the de-duplicated cube
+function spatialAvgUniq(roi){
+  const cube=S.tUnique; if(!cube) return null;
+  const nT=S.tUniqueList.length,{nY,nX}=S;
+  const x1=roi?Math.max(0,roi.x1):0,x2=roi?Math.min(nX-1,roi.x2):nX-1;
+  const y1=roi?Math.max(0,roi.y1):0,y2=roi?Math.min(nY-1,roi.y2):nY-1;
+  const tr=new Float64Array(nT),n=(x2-x1+1)*(y2-y1+1);
+  for(let t=0;t<nT;t++){
+    let s=0; for(let y=y1;y<=y2;y++) for(let x=x1;x<=x2;x++) s+=cv(cube,nY,nX,y,x,t);
+    tr[t]=s/n;
+  }
+  return tr;
 }
 
+function activeCube(){return S.ch===2?S.ch2:S.ch1;}
+
+// ═══════════════════════════════════════════════════════════
+// BASENAME — strip suffixes AND optional _NxM dimension
+// This ensures alignment_750nm_5X5_CH2.raw groups with
+// alignment_750nm_Tlist.txt (which has no _5X5)
+// ═══════════════════════════════════════════════════════════
+function getBasename(name){
+  let n=name;
+  n=n.replace(/_CH[12]\.raw$/i,'');
+  n=n.replace(/_Tlist\.txt$/i,'');
+  n=n.replace(/_XYZT\.txt$/i,'');
+  n=n.replace(/\.raw$/i,'');
+  // Strip trailing _NxM or _NXM (optional dimension suffix on any file type)
+  n=n.replace(/_\d+[xX]\d+$/,'');
+  return n;
+}
+
+// ═══════════════════════════════════════════════════════════
+// DATASET REGISTRY
+// ═══════════════════════════════════════════════════════════
 function getOrCreateDs(basename){
   let ds=S.datasets.find(d=>d.id===basename);
   if(!ds){ds={id:basename,ch1:null,ch2:null,tList:null,meta:null,nT:0,nY:0,nX:0};S.datasets.push(ds);}
@@ -497,14 +509,19 @@ function getOrCreateDs(basename){
 }
 
 function finalizeDs(ds){
-  // Once we have enough pieces, resolve dims
-  const rawName=ds.ch2?.name||ds.ch1?.name||'';
+  const rawName=(ds.ch2?.name||ds.ch1?.name||'');
   const m=rawName.match(/(\d+)[xX](\d+)/);
   if(m){ds.nX=parseInt(m[1]);ds.nY=parseInt(m[2]);}
-  if(ds.tList){ds.nT=ds.tList.length;}
-  else if(ds.ch2&&ds.nX&&ds.nY){ds.nT=Math.round(ds.ch2.length/(ds.nX*ds.nY));}
-  else if(ds.ch1&&ds.nX&&ds.nY){ds.nT=Math.round(ds.ch1.length/(ds.nX*ds.nY));}
+  if(ds.tList) ds.nT=ds.tList.length;
+  else if(ds.ch2&&ds.nX&&ds.nY) ds.nT=Math.round(ds.ch2.length/(ds.nX*ds.nY));
+  else if(ds.ch1&&ds.nX&&ds.nY) ds.nT=Math.round(ds.ch1.length/(ds.nX*ds.nY));
   renderDatasetList();
+}
+
+function dsTimestamp(ds){
+  if(!ds.meta) return Infinity;
+  const d=ds.meta.Date||'',t=ds.meta.Time||'';
+  try{return new Date(d+' '+t).getTime();}catch(e){return Infinity;}
 }
 
 function activateDs(ds){
@@ -515,31 +532,61 @@ function activateDs(ds){
   S.metadata=ds.meta||null;
   S.nT=ds.nT; S.nY=ds.nY; S.nX=ds.nX;
   S.frame=0;
-  // Re-derive
+  buildDedupCube();
   computeGlobalRange(); computeTimeAxis();
   updateSlider(); updateRoiInputs(); clearROI();
   renderImg(); updateTrace(); updateStats();
   renderMeta(); renderLevante(); updateHeaderPill();
-  // Auto-populate freq override
   const ov=document.getElementById('freqOv');
   ov.value=autoFreq(ds.meta)?autoFreq(ds.meta).toFixed(2):'';
   enableExports();
-  notify('Active: '+ds.id.split('/').pop().substring(0,40));
+  notify('Active: '+ds.id.split('/').pop().slice(0,40));
+  renderDatasetList(); // refresh active highlight
+}
+
+// Build de-duplicated, frame-averaged cube for the active dataset
+function buildDedupCube(){
+  const cube=activeCube(); if(!cube||!S.tList) return;
+  const{nT,nY,nX}=S;
+  // Find unique T values and their indices
+  const eps=1e-9;
+  const uniqT=[],groupIdx=[];
+  for(let t=0;t<nT;t++){
+    const v=S.tList[t];
+    let fi=uniqT.findIndex(u=>Math.abs(u-v)<eps);
+    if(fi<0){fi=uniqT.length;uniqT.push(v);}
+    groupIdx.push(fi);
+  }
+  const nU=uniqT.length;
+  const sum=new Float64Array(nU*nY*nX);
+  const cnt=new Int32Array(nU);
+  for(let t=0;t<nT;t++){
+    const fi=groupIdx[t];
+    const srcOff=t*nY*nX, dstOff=fi*nY*nX;
+    for(let i=0;i<nY*nX;i++) sum[dstOff+i]+=cube[srcOff+i];
+    cnt[fi]++;
+  }
+  for(let fi=0;fi<nU;fi++){
+    const n=cnt[fi], off=fi*nY*nX;
+    for(let i=0;i<nY*nX;i++) sum[off+i]/=n;
+  }
+  S.tUnique=sum;
+  S.tUniqueList=new Float64Array(uniqT);
+  S.nT=nU; // update nT to de-duped count for time trace operations
 }
 
 function autoFreq(meta){
   if(!meta) return null;
-  const dfg=parseFloat(meta.DFG_wn);
-  const idl=parseFloat(meta.Idler_wn);
+  const dfg=parseFloat(meta.DFG_wn),idl=parseFloat(meta.Idler_wn);
   if(!isNaN(dfg)&&dfg>=825&&dfg<=1900) return dfg;
   if(!isNaN(idl)) return idl;
   if(!isNaN(dfg)) return dfg;
   return null;
 }
 
-// ═══════════════════════════════
+// ═══════════════════════════════════════════════════════════
 // FILE LOADING
-// ═══════════════════════════════
+// ═══════════════════════════════════════════════════════════
 function handlePicked(e){processFiles(Array.from(e.target.files));e.target.value='';}
 
 const dz=document.getElementById('dz');
@@ -557,76 +604,51 @@ dz.addEventListener('drop',e=>{
       if(entry&&entry.isDirectory){isFolder=true;proms.push(readDir(entry));}
       else proms.push(Promise.resolve([item.getAsFile()]));
     }
-    Promise.all(proms).then(arrs=>{
-      const files=arrs.flat().filter(Boolean);
-      processFiles(files,isFolder);
-    });
-  } else {
-    processFiles(Array.from(e.dataTransfer.files),false);
-  }
+    Promise.all(proms).then(arrs=>processFiles(arrs.flat().filter(Boolean),isFolder));
+  } else processFiles(Array.from(e.dataTransfer.files),false);
 });
 dz.addEventListener('click',()=>document.getElementById('fp').click());
 
 function readDir(dir){
   return new Promise(res=>{
     const reader=dir.createReader(),files=[];
-    function rd(){
-      reader.readEntries(entries=>{
-        if(!entries.length) return res(files);
-        Promise.all(entries.map(en=>en.isFile?new Promise(r=>en.file(f=>r(f))):readDir(en)))
-          .then(rs=>{rs.flat().forEach(f=>files.push(f));rd();});
-      });
-    }
+    function rd(){reader.readEntries(entries=>{
+      if(!entries.length) return res(files);
+      Promise.all(entries.map(en=>en.isFile?new Promise(r=>en.file(f=>r(f))):readDir(en)))
+        .then(rs=>{rs.flat().forEach(f=>files.push(f));rd();});
+    });}
     rd();
   });
 }
 
-// Track pending async loads per dataset to know when all files are ready
-const _pending={};
-
-function processFiles(files, autoSpec=false){
-  // Sort so Tlist loads before RAW (helps dim inference)
-  files.sort((a,b)=>{ const s=n=>n.toLowerCase().includes('tlist')?0:1; return s(a.name)-s(b.name); });
-
-  // Count expected loads
-  const loadPromises=[];
+function processFiles(files,autoSpec=false){
+  const proms=[];
   files.forEach(f=>{
     const n=f.name,nl=n.toLowerCase();
     const base=getBasename(n);
     const ds=getOrCreateDs(base);
-    let p;
-    if(nl.endsWith('tlist.txt'))      p=loadTlistInto(f,ds);
-    else if(nl.endsWith('xyzt.txt'))  p=loadXYZTInto(f,ds);
-    else if(nl.endsWith('ch1.raw'))   p=loadRawInto(f,1,n,ds);
-    else if(nl.endsWith('.raw'))      p=loadRawInto(f,2,n,ds);
-    else p=Promise.resolve();
-    if(p) loadPromises.push(p);
+    if(nl.endsWith('tlist.txt'))     proms.push(loadTlistInto(f,ds));
+    else if(nl.endsWith('xyzt.txt')) proms.push(loadXYZTInto(f,ds));
+    else if(nl.endsWith('ch1.raw'))  proms.push(loadRawInto(f,1,n,ds));
+    else if(nl.endsWith('.raw'))     proms.push(loadRawInto(f,2,n,ds));
   });
-
-  if(autoSpec){
-    Promise.all(loadPromises).then(()=>{
-      buildSpectrumFromDatasets();
-      setSbTab('spec');
-    });
-  } else {
-    // Auto-activate first dataset loaded if nothing active
-    Promise.all(loadPromises).then(()=>{
-      if(!S.activeDs&&S.datasets.length>0) activateDs(S.datasets[0]);
-    });
-  }
+  Promise.all(proms).then(()=>{
+    if(autoSpec){buildSpectrumFromDatasets();setSbTab('spec');}
+    else if(!S.activeDs&&S.datasets.length>0) activateDs(S.datasets[0]);
+  });
 }
 
 function loadTlistInto(file,ds){
   return new Promise(res=>readText(file,txt=>{
-    ds.tList=new Float64Array(txt.trim().split(/[\r\n]+/).map(parseFloat).filter(v=>!isNaN(v)));
-    ds.nT=ds.tList.length; finalizeDs(ds); res();
+    // Support both newline-separated and tab-separated Tlists
+    const vals=txt.trim().split(/[\s,]+/).map(parseFloat).filter(v=>!isNaN(v));
+    ds.tList=new Float64Array(vals);
+    finalizeDs(ds); res();
   }));
 }
 
 function loadXYZTInto(file,ds){
-  return new Promise(res=>readText(file,txt=>{
-    ds.meta=parseXYZT(txt); finalizeDs(ds); res();
-  }));
+  return new Promise(res=>readText(file,txt=>{ds.meta=parseXYZT(txt);finalizeDs(ds);res();}));
 }
 
 function loadRawInto(file,ch,name,ds){
@@ -645,62 +667,67 @@ function loadRawInto(file,ch,name,ds){
 function readText(file,cb){const r=new FileReader();r.onload=e=>cb(e.target.result);r.readAsText(file);}
 
 function clearAll(){
-  S.datasets=[]; S.activeDs=null;
-  S.ch1=null; S.ch2=null; S.tList=null; S.timeAxis=null; S.metadata=null;
-  S.nT=0; S.nY=0; S.nX=0; S.frame=0;
-  S.specPoints=[]; S.retained=[];
-  renderDatasetList(); renderSpecList();
-  if(S.traceChart){S.traceChart.destroy();S.traceChart=null;}
-  if(S.specChart){S.specChart.destroy();S.specChart=null;}
-  document.getElementById('imgCanvas').width=1;
-  document.getElementById('imgCanvas').height=1;
-  document.getElementById('roiCanvas').width=1;
-  document.getElementById('roiCanvas').height=1;
+  S.datasets=[];S.activeDs=null;S.ch1=null;S.ch2=null;S.tList=null;S.tUnique=null;S.tUniqueList=null;
+  S.timeAxis=null;S.metadata=null;S.nT=0;S.nY=0;S.nX=0;S.frame=0;
+  S.specPoints=[];S.retained=[];S.specRetained=[];S.specDatasets=[];
+  renderDatasetList();renderSpecList();
+  ['traceChart'].forEach(id=>{if(S[id]){S[id].destroy();S[id]=null;}});
+  document.getElementById('imgCanvas').width=1;document.getElementById('imgCanvas').height=1;
+  document.getElementById('roiCanvas').width=1;document.getElementById('roiCanvas').height=1;
   document.getElementById('datasetLbl').textContent='No data';
   document.getElementById('datasetPill').classList.remove('live');
   notify('Cleared');
 }
 
-// ═══════════════════════════════
+// ═══════════════════════════════════════════════════════════
 // DATASET LIST UI
-// ═══════════════════════════════
+// ═══════════════════════════════════════════════════════════
 function renderDatasetList(){
   const el=document.getElementById('dsList');
   if(!S.datasets.length){
-    el.innerHTML='<div style="display:flex;flex-direction:column;align-items:center;height:80px;justify-content:center;color:var(--muted);font-size:9px;gap:4px"><span>📁</span><span>No datasets loaded</span></div>';
+    el.innerHTML='<div style="display:flex;flex-direction:column;align-items:center;height:80px;justify-content:center;color:var(--muted);font-size:9px;gap:4px"><span>📁</span><span>No datasets</span></div>';
     return;
   }
-  el.innerHTML=S.datasets.map((ds,i)=>{
+  const sortMode=document.getElementById('sortSel').value;
+  const sorted=[...S.datasets].sort((a,b)=>{
+    if(sortMode==='time') return dsTimestamp(a)-dsTimestamp(b);
+    if(sortMode==='freq'){
+      const fa=autoFreq(a.meta)??Infinity, fb=autoFreq(b.meta)??Infinity;
+      return fa-fb;
+    }
+    return a.id.localeCompare(b.id);
+  });
+  el.innerHTML=sorted.map((ds)=>{
     const active=S.activeDs===ds;
     const freq=autoFreq(ds.meta);
-    const freqStr=freq?freq.toFixed(1)+' cm⁻¹':(ds.id.split('/').pop().substring(0,28));
+    const freqStr=freq?freq.toFixed(1)+' cm⁻¹':ds.id.split('/').pop().slice(0,28);
     const date=ds.meta?.Date||'';
+    const time=ds.meta?.Time||'';
     const has={ch1:!!ds.ch1,ch2:!!ds.ch2,tl:!!ds.tList,meta:!!ds.meta};
     const tag=(k,l)=>`<span class="ds-tag ${has[k]?k:'miss'}">${l}</span>`;
-    return `<div class="ds-card${active?' active':''}" onclick="activateDs(S.datasets[${i}])">
+    // Use dataset object index in S.datasets for onclick (not sorted index)
+    const origIdx=S.datasets.indexOf(ds);
+    return `<div class="ds-card${active?' active':''}" onclick="activateDs(S.datasets[${origIdx}])">
       <div class="ds-head">
         <span class="ds-freq">${freqStr}</span>
-        <span class="ds-date">${date}</span>
+        <span class="ds-date">${date}${time?' '+time:''}</span>
       </div>
-      <div class="ds-files">
-        ${tag('ch2','CH2')}${tag('ch1','CH1')}${tag('tl','T')}${tag('meta','XYZ')}
-      </div>
+      <div class="ds-files">${tag('ch2','CH2')}${tag('ch1','CH1')}${tag('tl','T')}${tag('meta','XYZ')}</div>
     </div>`;
   }).join('');
 }
 
-// ═══════════════════════════════
+// ═══════════════════════════════════════════════════════════
 // MATH
-// ═══════════════════════════════
+// ═══════════════════════════════════════════════════════════
 function computeTimeAxis(){
-  if(!S.tList) return;
-  const cube=activeCube(); if(!cube) return;
-  const tr=spatialAvg(cube,null);
-  let pk=0; for(let t=1;t<S.nT;t++) if(tr[t]>tr[pk]) pk=t;
+  if(!S.tUniqueList) return;
+  const tr=spatialAvgUniq(null); if(!tr) return;
+  let pk=0; for(let t=1;t<tr.length;t++) if(tr[t]>tr[pk]) pk=t;
   S.peakIdx=pk;
   const c=0.3;
-  S.timeAxis=new Float64Array(S.nT);
-  for(let t=0;t<S.nT;t++) S.timeAxis[t]=4*(S.tList[t]-S.tList[pk])/c;
+  S.timeAxis=new Float64Array(S.tUniqueList.length);
+  for(let t=0;t<S.tUniqueList.length;t++) S.timeAxis[t]=4*(S.tUniqueList[t]-S.tUniqueList[pk])/c;
 }
 
 function computeGlobalRange(){
@@ -711,43 +738,84 @@ function computeGlobalRange(){
 }
 
 function computeBonfire(){
-  const cube=activeCube(); if(!cube) return 0;
-  const tr=spatialAvg(cube,null);
+  const tr=spatialAvgUniq(null); if(!tr) return 0;
   let mn=Infinity,mx=-Infinity;
   for(const v of tr){if(v<mn)mn=v;if(v>mx)mx=v;}
   return mx-mn;
 }
 
-// ═══════════════════════════════
+// Per-pixel BonFIRE image: max(t)-min(t) for each pixel using de-duped cube
+function computeBonfireImg(cube,nT,nY,nX){
+  const img=new Float64Array(nY*nX);
+  for(let y=0;y<nY;y++) for(let x=0;x<nX;x++){
+    let mn=Infinity,mx=-Infinity;
+    for(let t=0;t<nT;t++){const v=cv(cube,nY,nX,y,x,t);if(v<mn)mn=v;if(v>mx)mx=v;}
+    img[y*nX+x]=mx-mn;
+  }
+  return img;
+}
+
+// ═══════════════════════════════════════════════════════════
 // IMAGE RENDER
-// ═══════════════════════════════
+// ═══════════════════════════════════════════════════════════
 function gotoFrame(v){S.frame=parseInt(v);renderImg();}
+function gotoSpecFrame(v){S.specFrame=parseInt(v);renderImg();updateSpecTrace();}
 
 function renderImg(){
-  const cube=activeCube(); if(!cube) return;
-  const{nT,nY,nX,frame}=S;
+  if(S.mode==='spectrum') {renderSpecImg();return;}
+  renderTraceImg();
+}
+
+function renderTraceImg(){
+  const cube=activeCube(); if(!cube||!S.tUnique) return;
+  const{nT,nY,nX}=S;
   const cm=document.getElementById('cmSel').value;
   const scale=document.getElementById('scSel').value;
   const zoom=parseInt(document.getElementById('zmSel').value);
-  const fi=Math.min(frame,nT-1);
+  const fi=Math.min(S.frame,nT-1);
 
   let pxd;
   if(scale==='mean'){
     pxd=new Float64Array(nY*nX);
     for(let y=0;y<nY;y++) for(let x=0;x<nX;x++){
-      let s=0; for(let t=0;t<nT;t++) s+=cv(cube,y,x,t);
+      let s=0; for(let t=0;t<nT;t++) s+=cv(S.tUnique,nY,nX,y,x,t);
       pxd[y*nX+x]=s/nT;
     }
-  } else {pxd=frameSlice(cube,fi);}
+  } else {
+    pxd=S.tUnique.slice(fi*nY*nX,(fi+1)*nY*nX);
+  }
 
   let mn,mx;
   if(scale==='global'){mn=S.globalMin;mx=S.globalMax;}
   else{mn=Infinity;mx=-Infinity;for(const v of pxd){if(v<mn)mn=v;if(v>mx)mx=v;}}
+  paintCanvas(pxd,mn,mx,nY,nX,zoom,cm);
 
+  document.getElementById('frLbl').textContent=`${fi+1} / ${nT}`;
+  if(S.tUniqueList) document.getElementById('ovT').textContent=`T = ${S.tUniqueList[fi].toFixed(3)} mm`;
+  if(S.timeAxis) document.getElementById('ovDt').textContent=`Δt = ${S.timeAxis[fi].toFixed(1)} ps`;
+}
+
+function renderSpecImg(){
+  if(!S.specDatasets.length) return;
+  const fi=Math.min(S.specFrame,S.specDatasets.length-1);
+  const entry=S.specDatasets[fi];
+  const{nY,nX}=S;
+  const cm=document.getElementById('cmSel').value;
+  const zoom=parseInt(document.getElementById('zmSel').value);
+  const pxd=entry.bonfireImg;
+  let mn=Infinity,mx=-Infinity;
+  for(const v of pxd){if(v<mn)mn=v;if(v>mx)mx=v;}
+  paintCanvas(pxd,mn,mx,nY,nX,zoom,cm);
+
+  document.getElementById('specFrameLbl').textContent=`${entry.freq.toFixed(1)} cm⁻¹ (${fi+1}/${S.specDatasets.length})`;
+  document.getElementById('ovT').textContent=`${entry.freq.toFixed(1)} cm⁻¹`;
+  document.getElementById('ovDt').textContent=`ΔI = ${(mx-mn).toExponential(2)}`;
+}
+
+function paintCanvas(pxd,mn,mx,nY,nX,zoom,cm){
   const W=nX*zoom,H=nY*zoom;
   const imgCv=document.getElementById('imgCanvas');
   imgCv.width=W; imgCv.height=H;
-
   const ctx=imgCv.getContext('2d');
   const img=ctx.createImageData(W,H);
   const range=mx-mn||1;
@@ -760,67 +828,57 @@ function renderImg(){
     }
   }
   ctx.putImageData(img,0,0);
+  paintColorbar(mn,mx,cm);
+  positionRoiCanvas();drawROI();
+}
 
-  // Colorbar
+function paintColorbar(mn,mx,cm){
   const cb=document.getElementById('cbCanvas');
   const cbH=Math.max(cb.parentElement.offsetHeight-40,60);
   cb.width=14;cb.height=cbH;
   const cc=cb.getContext('2d');
   for(let i=0;i<cbH;i++){
     const[r,g,b]=mapColor(1-i/cbH,cm);
-    cc.fillStyle=`rgb(${r|0},${g|0},${b|0})`;
-    cc.fillRect(0,i,14,1);
+    cc.fillStyle=`rgb(${r|0},${g|0},${b|0})`;cc.fillRect(0,i,14,1);
   }
   document.getElementById('cbMin').textContent=fmtVal(mn);
   document.getElementById('cbMax').textContent=fmtVal(mx);
-  document.getElementById('frLbl').textContent=`${fi+1} / ${nT}`;
-  if(S.tList) document.getElementById('ovT').textContent=`T = ${S.tList[fi].toFixed(3)} mm`;
-  if(S.timeAxis) document.getElementById('ovDt').textContent=`Δt = ${S.timeAxis[fi].toFixed(1)} ps`;
-
-  // Sync ROI canvas position to imgCanvas
-  positionRoiCanvas();
-  drawROI();
 }
 
 function fmtVal(v){return(Math.abs(v)>999||Math.abs(v)<0.01)?v.toExponential(2):v.toPrecision(4);}
 
-// ═══════════════════════════════
+// ═══════════════════════════════════════════════════════════
 // ROI CANVAS ALIGNMENT
-// The canvas-wrap uses flexbox centering, so imgCanvas is centered
-// inside the container. roiCanvas must be positioned to exactly
-// overlap imgCanvas using its getBoundingClientRect relative to the wrap.
-// ═══════════════════════════════
+// ═══════════════════════════════════════════════════════════
 function positionRoiCanvas(){
   const wrap=document.getElementById('cwrap');
   const imgCv=document.getElementById('imgCanvas');
   const roiCv=document.getElementById('roiCanvas');
   const wRect=wrap.getBoundingClientRect();
   const iRect=imgCv.getBoundingClientRect();
-  roiCv.width=imgCv.width;
-  roiCv.height=imgCv.height;
+  roiCv.width=imgCv.width; roiCv.height=imgCv.height;
   roiCv.style.left=(iRect.left-wRect.left)+'px';
-  roiCv.style.top =(iRect.top -wRect.top )+'px';
+  roiCv.style.top=(iRect.top-wRect.top)+'px';
   roiCv.style.width=imgCv.width+'px';
   roiCv.style.height=imgCv.height+'px';
 }
 
-// ═══════════════════════════════
+// ═══════════════════════════════════════════════════════════
 // ROI DRAWING
-// ═══════════════════════════════
+// ═══════════════════════════════════════════════════════════
 function getZoom(){return parseInt(document.getElementById('zmSel').value);}
-
 function evtToPx(e){
   const rect=e.target.getBoundingClientRect(),zoom=getZoom();
   return{px:Math.floor((e.clientX-rect.left)/zoom),py:Math.floor((e.clientY-rect.top)/zoom)};
 }
 
 function rdStart(e){const{px,py}=evtToPx(e);S.roiDrag={px,py};}
-
 function rdMove(e){
   const{px,py}=evtToPx(e);
   const cube=activeCube();
-  if(cube&&px>=0&&py>=0&&px<S.nX&&py<S.nY){
-    const val=cv(cube,py,px,Math.min(S.frame,S.nT-1));
+  if(cube&&S.tUnique&&px>=0&&py>=0&&px<S.nX&&py<S.nY){
+    const t=Math.min(S.frame,S.nT-1);
+    const val=cv(S.tUnique,S.nY,S.nX,py,px,t);
     const el=document.getElementById('ovPx');
     el.textContent=`x=${px} y=${py}  ${val.toExponential(3)}`;
     el.style.display='block';
@@ -834,8 +892,11 @@ function rdMove(e){
   };
   updateRoiInputs();drawROI();
 }
-
-function rdEnd(e){rdMove(e);S.roiDrag=null;if(document.getElementById('avgSel').value==='roi')updateTrace();}
+function rdEnd(e){
+  rdMove(e);S.roiDrag=null;
+  if(S.mode==='trace'&&document.getElementById('avgSel').value==='roi') updateTrace();
+  if(S.mode==='spectrum'&&document.getElementById('specAvgSel').value==='roi') updateSpecTrace();
+}
 function rdLeave(e){rdEnd(e);document.getElementById('ovPx').style.display='none';}
 
 function drawROI(){
@@ -849,9 +910,7 @@ function drawROI(){
   ctx.strokeRect(rx+.5,ry+.5,rw-1,rh-1);
   ctx.fillStyle='rgba(167,139,250,.09)';ctx.fillRect(rx+.5,ry+.5,rw-1,rh-1);
 }
-
 function clearROI(){S.roi=null;updateRoiInputs();drawROI();updateTrace();}
-
 function onRoiInput(){
   const x1=parseInt(document.getElementById('rX1').value)||0;
   const x2=parseInt(document.getElementById('rX2').value)||(S.nX-1);
@@ -861,54 +920,195 @@ function onRoiInput(){
   drawROI();
   if(document.getElementById('avgSel').value==='roi') updateTrace();
 }
-
 function updateRoiInputs(){
   if(S.roi){
-    document.getElementById('rX1').value=S.roi.x1;
-    document.getElementById('rX2').value=S.roi.x2;
-    document.getElementById('rY1').value=S.roi.y1;
-    document.getElementById('rY2').value=S.roi.y2;
+    document.getElementById('rX1').value=S.roi.x1;document.getElementById('rX2').value=S.roi.x2;
+    document.getElementById('rY1').value=S.roi.y1;document.getElementById('rY2').value=S.roi.y2;
+  } else ['rX1','rX2','rY1','rY2'].forEach(id=>document.getElementById(id).value='');
+}
+
+// ═══════════════════════════════════════════════════════════
+// MODE SWITCHING (time trace ↔ spectrum)
+// ═══════════════════════════════════════════════════════════
+function toggleMode(){
+  S.mode=S.mode==='trace'?'spectrum':'trace';
+  const isSpec=S.mode==='spectrum';
+  document.getElementById('traceSliderGroup').style.display=isSpec?'none':'';
+  document.getElementById('specSliderGroup').style.display=isSpec?'':'none';
+  document.getElementById('imgBarLabel').textContent=isSpec?'BonFIRE Image':'Image';
+  document.getElementById('traceBarLabel').textContent=isSpec?'IR Spectrum':'Trace';
+  document.getElementById('timeTraceControls').style.display=isSpec?'none':'contents';
+  document.getElementById('specTraceControls').style.display=isSpec?'':'none';
+  document.getElementById('modeBtn').classList.toggle('active-mode',isSpec);
+  if(isSpec){
+    buildSpecDatasets();
+    renderImg();
+    updateSpecTrace();
   } else {
-    ['rX1','rX2','rY1','rY2'].forEach(id=>document.getElementById(id).value='');
+    renderImg();
+    updateTrace();
   }
 }
 
-// ═══════════════════════════════
+// Build per-dataset BonFIRE images for the spectrum mode
+function buildSpecDatasets(){
+  S.specDatasets=[];
+  const sorted=[...S.datasets].sort((a,b)=>{
+    const fa=autoFreq(a.meta)??Infinity,fb=autoFreq(b.meta)??Infinity;
+    return fa-fb;
+  });
+  sorted.forEach(ds=>{
+    const rawCube=S.ch===2?ds.ch2?.arr:ds.ch1?.arr; if(!rawCube) return;
+    const freq=autoFreq(ds.meta); if(freq===null) return;
+    const{nT,nY,nX}=ds; if(!nT||!nY||!nX) return;
+    // Build dedup cube for this dataset
+    const tl=ds.tList; if(!tl) return;
+    const eps=1e-9,uniqT=[],groupIdx=[];
+    for(let t=0;t<nT;t++){
+      const v=tl[t];
+      let fi=uniqT.findIndex(u=>Math.abs(u-v)<eps);
+      if(fi<0){fi=uniqT.length;uniqT.push(v);}
+      groupIdx.push(fi);
+    }
+    const nU=uniqT.length;
+    const sum=new Float64Array(nU*nY*nX),cnt=new Int32Array(nU);
+    for(let t=0;t<nT;t++){
+      const fi=groupIdx[t],srcOff=t*nY*nX,dstOff=fi*nY*nX;
+      for(let i=0;i<nY*nX;i++) sum[dstOff+i]+=rawCube[srcOff+i];
+      cnt[fi]++;
+    }
+    for(let fi=0;fi<nU;fi++){const n=cnt[fi],off=fi*nY*nX;for(let i=0;i<nY*nX;i++) sum[off+i]/=n;}
+    const bonfireImg=computeBonfireImg(sum,nU,nY,nX);
+    S.specDatasets.push({ds,freq,bonfireImg,nT:nU,nY,nX});
+  });
+  // Update spectrum scrubber
+  const sl=document.getElementById('specSlider');
+  sl.max=Math.max(0,S.specDatasets.length-1);
+  sl.value=0; S.specFrame=0;
+}
+
+// Spectrum trace: BonFIRE intensity vs frequency for a given ROI
+function updateSpecTrace(){
+  if(!S.specDatasets.length) return;
+  const useRoi=document.getElementById('specAvgSel').value==='roi'&&S.roi;
+  const useLog=document.getElementById('specLogSel').value==='log';
+
+  function roiMeanImg(img,nY,nX,roi){
+    const x1=roi?Math.max(0,roi.x1):0,x2=roi?Math.min(nX-1,roi.x2):nX-1;
+    const y1=roi?Math.max(0,roi.y1):0,y2=roi?Math.min(nY-1,roi.y2):nY-1;
+    let s=0,n=0;
+    for(let y=y1;y<=y2;y++) for(let x=x1;x<=x2;x++){s+=img[y*nX+x];n++;}
+    return n?s/n:0;
+  }
+
+  const xs=S.specDatasets.map(e=>e.freq);
+  const ys=S.specDatasets.map(e=>roiMeanImg(e.bonfireImg,e.nY,e.nX,useRoi?S.roi:null));
+  const norm=S.normalizeIR;
+
+  // Apply IR normalization if enabled
+  const ysNorm=ys.map((y,i)=>{
+    const irPow=S.specDatasets[i].ds.meta?parseFloat(S.specDatasets[i].ds.meta['IR_power (mW)']):NaN;
+    return(norm&&!isNaN(irPow)&&irPow>0)?y/irPow:y;
+  });
+
+  const live={
+    label:'BonFIRE spectrum'+(norm?' (norm.)':''),
+    data:xs.map((x,i)=>({x,y:ysNorm[i]})),
+    borderColor:PAL[0],backgroundColor:PAL[0]+'22',
+    borderWidth:1.5,pointRadius:4,pointHoverRadius:6,
+    fill:true,tension:.3,order:0,
+    pointBackgroundColor:xs.map((_,i)=>i===S.specFrame?'#fff':PAL[0]),
+    pointBorderColor:PAL[0],pointBorderWidth:1,
+  };
+
+  const retDS=S.specRetained.map((r,i)=>({
+    label:r.label,data:r.xs.map((x,j)=>({x,y:r.ys[j]})),
+    borderColor:PAL[(i+1)%PAL.length],backgroundColor:PAL[(i+1)%PAL.length]+'18',
+    borderWidth:1.5,pointRadius:2,fill:false,tension:.3,order:i+1,
+  }));
+
+  const yLabel=norm?'BonFIRE ΔI / IR power':'BonFIRE intensity (a.u.)';
+  const cfg={
+    type:'line',data:{datasets:[live,...retDS]},
+    options:{
+      responsive:true,maintainAspectRatio:false,animation:{duration:120},
+      plugins:{
+        legend:{labels:{color:'#525870',font:{family:'Space Mono',size:9},boxWidth:10}},
+        tooltip:{backgroundColor:'#0f1018',borderColor:'#1f2035',borderWidth:1,titleColor:'#525870',bodyColor:'#dde1f0',
+          callbacks:{title:its=>`${its[0].parsed.x.toFixed(2)} cm⁻¹`,label:it=>`ΔI = ${it.parsed.y.toExponential(4)}`}},
+      },
+      scales:{
+        x:{type:'linear',title:{display:true,text:'Frequency (cm⁻¹)',color:'#525870',font:{family:'Space Mono',size:9}},
+           ticks:{color:'#525870',font:{family:'Space Mono',size:8}},grid:{color:'#1f2035'}},
+        y:{type:useLog?'logarithmic':'linear',title:{display:true,text:yLabel,color:'#525870',font:{family:'Space Mono',size:9}},
+           ticks:{color:'#525870',font:{family:'Space Mono',size:8}},grid:{color:'#1f2035'}},
+      }
+    }
+  };
+  if(S.traceChart) S.traceChart.destroy();
+  S.traceChart=new Chart(document.getElementById('traceChart'),cfg);
+}
+
+// ═══════════════════════════════════════════════════════════
 // TIME TRACE
-// ═══════════════════════════════
+// ═══════════════════════════════════════════════════════════
 function buildXY(){
-  const cube=activeCube(); if(!cube||!S.tList) return null;
+  if(!S.tUnique||!S.tUniqueList) return null;
   const roi=(document.getElementById('avgSel').value==='roi'&&S.roi)?S.roi:null;
-  const tr=spatialAvg(cube,roi);
+  const tr=spatialAvgUniq(roi);
   const xm=document.getElementById('xaxSel').value;
   let xs;
   if(xm==='ps'&&S.timeAxis) xs=Array.from(S.timeAxis);
-  else if(xm==='mm') xs=Array.from(S.tList);
+  else if(xm==='mm') xs=Array.from(S.tUniqueList);
   else xs=Array.from({length:S.nT},(_,i)=>i);
   return{xs,ys:Array.from(tr)};
 }
-
 function xLabel(){const m=document.getElementById('xaxSel').value;return m==='ps'?'Delay (ps)':m==='mm'?'Stage (mm)':'Frame index';}
 
 function updateTrace(){
+  if(S.mode==='spectrum'){updateSpecTrace();return;}
   const res=buildXY(); if(!res) return;
   const{xs,ys}=res;
   const useLog=document.getElementById('logSel').value==='log';
-  const cc=S.ch===2?'#ff6b35':'#38bdf8';
+  const liveColor=PAL[0]; // always purple for live
+
+  // Vertical line annotation for current frame
+  const fi=Math.min(S.frame,S.nT-1);
+  const curX=xs[fi];
+
   const live={
     label:`CH${S.ch} (live)`,
     data:xs.map((x,i)=>({x,y:ys[i]})),
-    borderColor:cc,backgroundColor:cc+'22',
+    borderColor:liveColor,backgroundColor:liveColor+'22',
     borderWidth:1.5,pointRadius:S.nT>60?2:3,
     pointHoverRadius:5,fill:true,tension:.3,order:0,
   };
+
+  // Current frame vertical line as a dataset with a single point + custom plugin
   const retDS=S.retained.map((r,i)=>({
     label:r.label,data:r.xs.map((x,j)=>({x,y:r.ys[j]})),
-    borderColor:r.color,backgroundColor:r.color+'18',
+    borderColor:PAL[(i+1)%PAL.length],backgroundColor:PAL[(i+1)%PAL.length]+'18',
     borderWidth:1.5,pointRadius:0,fill:false,tension:.3,order:i+1,
   }));
+
+  // Inline plugin to draw current frame line
+  const frameLinePlugin={
+    id:'frameLine',
+    afterDraw(chart){
+      if(curX===undefined) return;
+      const{ctx,chartArea,scales}=chart;
+      const x=scales.x.getPixelForValue(curX);
+      if(x<chartArea.left||x>chartArea.right) return;
+      ctx.save();
+      ctx.beginPath();ctx.moveTo(x,chartArea.top);ctx.lineTo(x,chartArea.bottom);
+      ctx.strokeStyle='rgba(255,255,255,0.25)';ctx.lineWidth=1;ctx.setLineDash([3,3]);
+      ctx.stroke();ctx.restore();
+    }
+  };
+
   const cfg={
     type:'line',data:{datasets:[live,...retDS]},
+    plugins:[frameLinePlugin],
     options:{
       responsive:true,maintainAspectRatio:false,animation:{duration:120},
       plugins:{
@@ -925,45 +1125,62 @@ function updateTrace(){
     }
   };
   if(S.traceChart) S.traceChart.destroy();
-  if(S.specChart){S.specChart.destroy();S.specChart=null;}
   S.traceChart=new Chart(document.getElementById('traceChart'),cfg);
 }
 
 function retainTrace(){
-  const res=buildXY(); if(!res) return;
-  const roi=document.getElementById('avgSel').value==='roi'&&S.roi;
-  const tag=roi?` ROI(${S.roi.x1}-${S.roi.x2},${S.roi.y1}-${S.roi.y2})`:'';
-  const dsLabel=(S.activeDs?.meta?.DFG_wn)?parseFloat(S.activeDs.meta.DFG_wn).toFixed(0)+'cm⁻¹':'';
-  S.retained.push({
-    label:`CH${S.ch}${dsLabel?'·'+dsLabel:''}${tag}[${S.retained.length+1}]`,
-    xs:res.xs,ys:res.ys,color:PAL[S.retained.length%PAL.length]
-  });
-  updateTrace(); notify('Trace retained');
+  if(S.mode==='spectrum'){
+    // Retain current spectrum trace
+    if(!S.specDatasets.length) return;
+    const useRoi=document.getElementById('specAvgSel').value==='roi'&&S.roi;
+    const xs=S.specDatasets.map(e=>e.freq);
+    function roiMean(img,nY,nX,roi){
+      const x1=roi?Math.max(0,roi.x1):0,x2=roi?Math.min(nX-1,roi.x2):nX-1;
+      const y1=roi?Math.max(0,roi.y1):0,y2=roi?Math.min(nY-1,roi.y2):nY-1;
+      let s=0,n=0;for(let y=y1;y<=y2;y++) for(let x=x1;x<=x2;x++){s+=img[y*nX+x];n++;}return n?s/n:0;
+    }
+    const ys=S.specDatasets.map(e=>roiMean(e.bonfireImg,e.nY,e.nX,useRoi?S.roi:null));
+    const tag=useRoi?` ROI(${S.roi.x1}-${S.roi.x2},${S.roi.y1}-${S.roi.y2})`:'';
+    S.specRetained.push({label:`Spec${tag}[${S.specRetained.length+1}]`,xs,ys});
+    updateSpecTrace(); notify('Spectrum trace retained');
+  } else {
+    const res=buildXY(); if(!res) return;
+    const roi=document.getElementById('avgSel').value==='roi'&&S.roi;
+    const tag=roi?` ROI(${S.roi.x1}-${S.roi.x2},${S.roi.y1}-${S.roi.y2})`:'';
+    const dsLabel=S.activeDs?.meta?.DFG_wn?parseFloat(S.activeDs.meta.DFG_wn).toFixed(0)+'·':'';
+    S.retained.push({label:`CH${S.ch}·${dsLabel}${tag}[${S.retained.length+1}]`,xs:res.xs,ys:res.ys});
+    updateTrace(); notify('Trace retained');
+  }
 }
 
-function clearTraces(){S.retained=[];updateTrace();notify('Traces cleared');}
+function clearTraces(){
+  S.retained=[];S.specRetained=[];
+  if(S.mode==='spectrum') updateSpecTrace(); else updateTrace();
+  notify('Traces cleared');
+}
 
-// ═══════════════════════════════
-// SPECTRUM
-// ═══════════════════════════════
-function dsIntensity(ds){
-  // Compute BonFIRE intensity for a given dataset record
-  const cube=ds.ch2?.arr||ds.ch1?.arr; if(!cube) return null;
-  // Temporarily set global S dims
-  const savedNT=S.nT,savedNY=S.nY,savedNX=S.nX;
-  S.nT=ds.nT;S.nY=ds.nY;S.nX=ds.nX;
-  // Use spatialAvg with no roi
-  const x1=0,x2=ds.nX-1,y1=0,y2=ds.nY-1;
-  const tr=new Float64Array(ds.nT),n=ds.nX*ds.nY;
-  for(let t=0;t<ds.nT;t++){
-    let s=0;
-    for(let y=0;y<ds.nY;y++) for(let x=0;x<ds.nX;x++){
-      // Direct access using ds dims (not S dims)
-      s+=cube[t*ds.nY*ds.nX+y*ds.nX+x];
-    }
-    tr[t]=s/n;
+// ═══════════════════════════════════════════════════════════
+// SPECTRUM POINTS (sidebar spectrum tab)
+// ═══════════════════════════════════════════════════════════
+function dsIntensityFromDedup(ds){
+  const rawCube=S.ch===2?ds.ch2?.arr:ds.ch1?.arr; if(!rawCube) return null;
+  const{nT,nY,nX}=ds; if(!nT||!nY||!nX||!ds.tList) return null;
+  const eps=1e-9,uniqT=[],groupIdx=[];
+  for(let t=0;t<nT;t++){
+    const v=ds.tList[t];let fi=uniqT.findIndex(u=>Math.abs(u-v)<eps);
+    if(fi<0){fi=uniqT.length;uniqT.push(v);}groupIdx.push(fi);
   }
-  S.nT=savedNT;S.nY=savedNY;S.nX=savedNX;
+  const nU=uniqT.length;
+  const sum=new Float64Array(nU*nY*nX),cnt=new Int32Array(nU);
+  for(let t=0;t<nT;t++){
+    const fi=groupIdx[t],srcOff=t*nY*nX,dstOff=fi*nY*nX;
+    for(let i=0;i<nY*nX;i++) sum[dstOff+i]+=rawCube[srcOff+i];
+    cnt[fi]++;
+  }
+  for(let fi=0;fi<nU;fi++){const n=cnt[fi],off=fi*nY*nX;for(let i=0;i<nU*nY*nX&&off+nY*nX<=sum.length;i+=1){if(fi*nY*nX+i<sum.length)sum[fi*nY*nX+i]/=n;}}
+  // Spatial average trace
+  const tr=new Float64Array(nU);
+  for(let t=0;t<nU;t++){let s=0;for(let i=0;i<nY*nX;i++) s+=sum[t*nY*nX+i];tr[t]=s/(nY*nX);}
   let mn=Infinity,mx=-Infinity;
   for(const v of tr){if(v<mn)mn=v;if(v>mx)mx=v;}
   return mx-mn;
@@ -973,31 +1190,29 @@ function buildSpectrumFromDatasets(){
   S.specPoints=[];
   S.datasets.forEach(ds=>{
     const freq=autoFreq(ds.meta); if(freq===null) return;
-    const intensity=dsIntensity(ds); if(intensity===null) return;
+    const intensity=dsIntensityFromDedup(ds); if(intensity===null) return;
     const irPower=ds.meta?parseFloat(ds.meta['IR_power (mW)'])||null:null;
     S.specPoints.push({freq,intensity,irPower,label:`${freq.toFixed(1)} cm⁻¹`,dsId:ds.id});
   });
   S.specPoints.sort((a,b)=>a.freq-b.freq);
-  renderSpecList(); renderSpectrumChart();
-  updateSpecSummary();
+  renderSpecList();renderSpectrumChart();updateSpecSummary();
   setSbTab('spec');
   notify(`Spectrum: ${S.specPoints.length} points`);
 }
 
 function toggleNormalize(){
   S.normalizeIR=!S.normalizeIR;
-  renderSpectrumChart(); updateSpecSummary();
+  document.getElementById('normBtn').classList.toggle('go',S.normalizeIR);
+  renderSpectrumChart();updateSpecSummary();
+  if(S.mode==='spectrum') updateSpecTrace();
   notify('IR normalization: '+(S.normalizeIR?'ON':'OFF'));
 }
 
-function getSpecY(p){
-  if(S.normalizeIR&&p.irPower&&p.irPower>0) return p.intensity/p.irPower;
-  return p.intensity;
-}
+function getSpecY(p){return(S.normalizeIR&&p.irPower&&p.irPower>0)?p.intensity/p.irPower:p.intensity;}
 
 function renderSpecList(){
   const el=document.getElementById('specList');
-  if(!S.specPoints.length){el.innerHTML='<div class="note" style="padding:3px 0">No points. Drop a folder to auto-build.</div>';return;}
+  if(!S.specPoints.length){el.innerHTML='<div class="note" style="padding:3px 0">No points. Drop a folder.</div>';return;}
   el.innerHTML=S.specPoints.map((p,i)=>`
     <div class="spec-row">
       <div class="spec-dot" style="background:${PAL[i%PAL.length]}"></div>
@@ -1007,13 +1222,13 @@ function renderSpecList(){
     </div>`).join('');
 }
 
-function rmSpec(i){S.specPoints.splice(i,1);renderSpecList();if(S.specChart)renderSpectrumChart();updateSpecSummary();}
-function clearSpec(){S.specPoints=[];renderSpecList();if(S.specChart){S.specChart.destroy();S.specChart=null;}updateSpecSummary();}
+function rmSpec(i){S.specPoints.splice(i,1);renderSpecList();if(S.traceChart&&S.sbTab==='spec')renderSpectrumChart();updateSpecSummary();}
+function clearSpec(){S.specPoints=[];renderSpecList();if(S.traceChart){S.traceChart.destroy();S.traceChart=null;}updateSpecSummary();}
 
 function renderSpectrumChart(){
   if(!S.specPoints.length){notify('No spectrum points');return;}
   const pts=S.specPoints;
-  const yLabel=S.normalizeIR?'BonFIRE intensity / IR power (a.u./mW)':'BonFIRE intensity (a.u.)';
+  const yLabel=S.normalizeIR?'BonFIRE ΔI / IR power':'BonFIRE intensity (a.u.)';
   const cfg={
     type:'line',
     data:{datasets:[{
@@ -1040,9 +1255,8 @@ function renderSpectrumChart(){
       }
     }
   };
-  if(S.traceChart){S.traceChart.destroy();S.traceChart=null;}
-  if(S.specChart) S.specChart.destroy();
-  S.specChart=new Chart(document.getElementById('traceChart'),cfg);
+  if(S.traceChart) S.traceChart.destroy();
+  S.traceChart=new Chart(document.getElementById('traceChart'),cfg);
   document.getElementById('eSC').disabled=false;
   document.getElementById('eSP').disabled=false;
   document.getElementById('eAPS').disabled=false;
@@ -1074,29 +1288,25 @@ function renderIRPowerPlot(){
   const pts=S.specPoints.filter(p=>p.irPower&&p.irPower>0);
   if(!pts.length) return;
   const xs=pts.map(p=>p.freq),ys=pts.map(p=>p.irPower);
-  const xmn=Math.min(...xs),xmx=Math.max(...xs)||xmn+1;
-  const ymx=Math.max(...ys),ymn=Math.min(...ys);
+  const xmn=Math.min(...xs),xmx=Math.max(...xs)||xmn+1,ymx=Math.max(...ys),ymn=Math.min(...ys);
   const pad={l:4,r:4,t:4,b:4};
   const sx=x=>pad.l+(x-xmn)/(xmx-xmn)*(W-pad.l-pad.r);
   const sy=y=>H-pad.b-(y-ymn)/((ymx-ymn)||1)*(H-pad.t-pad.b);
-  // Fill
   ctx.beginPath();ctx.moveTo(sx(xs[0]),sy(0));
   pts.forEach(p=>ctx.lineTo(sx(p.freq),sy(p.irPower)));
   ctx.lineTo(sx(xs[xs.length-1]),sy(0));ctx.closePath();
   ctx.fillStyle='rgba(56,189,248,.12)';ctx.fill();
-  // Line
   ctx.strokeStyle='#38bdf8';ctx.lineWidth=1;ctx.setLineDash([]);
   ctx.beginPath();pts.forEach((p,i)=>i?ctx.lineTo(sx(p.freq),sy(p.irPower)):ctx.moveTo(sx(p.freq),sy(p.irPower)));
   ctx.stroke();
-  // Dots
   pts.forEach(p=>{ctx.fillStyle='#38bdf8';ctx.beginPath();ctx.arc(sx(p.freq),sy(p.irPower),2,0,Math.PI*2);ctx.fill();});
 }
 
-// ═══════════════════════════════
+// ═══════════════════════════════════════════════════════════
 // METADATA
-// ═══════════════════════════════
+// ═══════════════════════════════════════════════════════════
 const META_ROWS=[
-  ['Date','Date'],['Probe_wl','Probe λ (nm)'],['DFG_wn','DFG (cm⁻¹)'],
+  ['Date','Date'],['Time','Time'],['Probe_wl','Probe λ (nm)'],['DFG_wn','DFG (cm⁻¹)'],
   ['Idler_wn','Idler (cm⁻¹)'],['IR_power (mW)','IR power (mW)'],
   ['Probe_power','Probe power (μW)'],['Dwell time (ms)','Dwell (ms)'],
   ['NDfilter','ND filter'],['Concentration (uM)','Conc. (μM)'],
@@ -1112,7 +1322,7 @@ function parseXYZT(txt){
     const key=line.slice(0,ti).trim(),val=line.slice(ti+1).trim();
     if(key==='Levante spectrum'){
       const parts=val.split(/\s+/).map(parseFloat).filter(v=>!isNaN(v));
-      const lev=[];for(let i=0;i<parts.length-1;i+=2)lev.push([parts[i],parts[i+1]]);
+      const lev=[];for(let i=0;i<parts.length-1;i+=2) lev.push([parts[i],parts[i+1]]);
       m._levante=lev;
     } else {m[key]=val;}
   });
@@ -1124,7 +1334,7 @@ function renderMeta(){
   const rows=META_ROWS.filter(([k])=>S.metadata[k]!==undefined).map(([k,l])=>{
     const v=parseFloat(S.metadata[k]);
     const d=isNaN(v)?S.metadata[k]:(Number.isInteger(v)?v:v.toFixed(3));
-    return `<tr><td>${l}</td><td>${d}</td></tr>`;
+    return`<tr><td>${l}</td><td>${d}</td></tr>`;
   }).join('');
   document.getElementById('metaBody').innerHTML=`<table class="meta-tbl">${rows}</table>`;
 }
@@ -1158,13 +1368,13 @@ function updateHeaderPill(){
   document.getElementById('datasetPill').classList.add('live');
 }
 
-// ═══════════════════════════════
+// ═══════════════════════════════════════════════════════════
 // STATS
-// ═══════════════════════════════
+// ═══════════════════════════════════════════════════════════
 function updateStats(){
   document.getElementById('stF').textContent=S.nT||'—';
   document.getElementById('stP').textContent=(S.nX&&S.nY)?`${S.nX}×${S.nY}`:'—';
-  if(S.timeAxis){
+  if(S.timeAxis&&S.nT){
     document.getElementById('stPk').textContent=S.timeAxis[S.peakIdx].toFixed(1)+' ps';
     document.getElementById('stR').textContent=(S.timeAxis[S.nT-1]-S.timeAxis[0]).toFixed(1)+' ps';
   }
@@ -1180,16 +1390,19 @@ function getFreq(){
   return autoFreq(S.metadata);
 }
 
-function updateSlider(){const sl=document.getElementById('fslider');sl.max=Math.max(0,S.nT-1);sl.value=0;S.frame=0;}
+function updateSlider(){
+  const sl=document.getElementById('fslider');
+  sl.max=Math.max(0,S.nT-1);sl.value=0;S.frame=0;
+}
 
-// ═══════════════════════════════
+// ═══════════════════════════════════════════════════════════
 // CHANNEL / SIDEBAR TAB
-// ═══════════════════════════════
+// ═══════════════════════════════════════════════════════════
 function setCh(ch){
   S.ch=ch;
   document.getElementById('ch1Btn').className='ch-btn ch1'+(ch===1?' on':'');
   document.getElementById('ch2Btn').className='ch-btn ch2'+(ch===2?' on':'');
-  computeGlobalRange();computeTimeAxis();renderImg();updateTrace();updateStats();
+  buildDedupCube();computeGlobalRange();computeTimeAxis();renderImg();updateTrace();updateStats();
 }
 
 function setSbTab(t){
@@ -1198,76 +1411,90 @@ function setSbTab(t){
   document.getElementById('pSpec').style.display=t==='spec'?'':'none';
   document.getElementById('tbFiles').className='tab-btn'+(t==='files'?' on':'');
   document.getElementById('tbSpec').className='tab-btn'+(t==='spec'?' on':'');
-  // Switch right panel view
   document.getElementById('rpSingle').style.display=t==='files'?'':'none';
   document.getElementById('rpSpectrum').style.display=t==='spec'?'':'none';
 }
 
-// ═══════════════════════════════
+// ═══════════════════════════════════════════════════════════
 // EXPORT
-// ═══════════════════════════════
-function enableExports(){
-  ['eTC','eTP','eAP','eTIF'].forEach(id=>{const el=document.getElementById(id);if(el)el.disabled=false;});
-}
+// ═══════════════════════════════════════════════════════════
+function enableExports(){['eTC','eTP','eAP','eTIF'].forEach(id=>{const el=document.getElementById(id);if(el)el.disabled=false;});}
 
 function exportTraceCSV(){
-  const cube=activeCube(); if(!cube||!S.tList) return;
-  const tr=spatialAvg(cube,null);
+  if(S.mode==='spectrum'){exportSpecCSV();return;}
+  if(!S.tUnique||!S.tUniqueList) return;
+  const tr=spatialAvgUniq(null);
   const rows=['frame,stage_mm,delay_ps,signal'];
   for(let t=0;t<S.nT;t++)
-    rows.push(`${t+1},${S.tList[t]},${S.timeAxis?S.timeAxis[t].toFixed(4):''},${tr[t]}`);
+    rows.push(`${t+1},${S.tUniqueList[t]},${S.timeAxis?S.timeAxis[t].toFixed(4):''},${tr[t]}`);
   dlTxt(rows.join('\n'),`bonfire_trace_CH${S.ch}.csv`);notify('Trace CSV exported');
 }
 
 function exportTracePNG(){
-  dl(document.getElementById('traceChart').toDataURL('image/png'),'bonfire_trace.png');notify('Trace PNG exported');
+  dl(document.getElementById('traceChart').toDataURL('image/png'),'bonfire_trace.png');notify('PNG exported');
 }
 
+function exportSpecPNG(){exportTracePNG();}
+
 function exportAppPNG(){
-  // Use html2canvas-style approach: composite all visible canvases into one
-  // Since html2canvas isn't available, we'll capture the body via a canvas trick
-  // Best we can do in pure JS: create a single canvas compositing image + ROI + trace
-  const imgCv=document.getElementById('imgCanvas');
-  const traceCv=document.getElementById('traceChart');
-  const W=Math.max(imgCv.width+traceCv.offsetWidth, 800);
-  const H=Math.max(imgCv.height, traceCv.offsetHeight)+80;
+  // Composite all three visible canvases onto a single canvas matching window size
   const out=document.createElement('canvas');
-  out.width=window.innerWidth; out.height=window.innerHeight;
+  out.width=window.innerWidth;out.height=window.innerHeight;
   const ctx=out.getContext('2d');
-  ctx.fillStyle='#09090f'; ctx.fillRect(0,0,out.width,out.height);
-  // Draw img canvas
-  const iRect=imgCv.getBoundingClientRect();
-  ctx.drawImage(imgCv,iRect.left,iRect.top,imgCv.width,imgCv.height);
-  // Draw ROI canvas
-  const rRect=document.getElementById('roiCanvas').getBoundingClientRect();
-  ctx.drawImage(document.getElementById('roiCanvas'),rRect.left,rRect.top);
-  // Draw trace chart
-  const tRect=traceCv.getBoundingClientRect();
-  ctx.drawImage(traceCv,tRect.left,tRect.top,tRect.width,tRect.height);
-  dl(out.toDataURL('image/png'),'bonfire_app.png'); notify('App PNG exported');
+  ctx.fillStyle='#09090f';ctx.fillRect(0,0,out.width,out.height);
+
+  const canvases=[
+    document.getElementById('imgCanvas'),
+    document.getElementById('roiCanvas'),
+    document.getElementById('traceChart'),
+  ];
+
+  // Also draw sidebar and right panel as solid color blocks with text would be complex;
+  // instead we draw the full body background and then place each canvas at its screen position
+  canvases.forEach(cv=>{
+    if(!cv||cv.width<2) return;
+    try{
+      const r=cv.getBoundingClientRect();
+      ctx.drawImage(cv,r.left,r.top,r.width,r.height);
+    }catch(e){}
+  });
+
+  // Draw sidebar background
+  const sb=document.getElementById('sidebarEl');
+  const rp=document.getElementById('rpanelEl');
+  [sb,rp].forEach(el=>{
+    const r=el.getBoundingClientRect();
+    ctx.fillStyle='#0f1018';
+    ctx.fillRect(r.left,r.top,r.width,r.height);
+  });
+
+  // Re-draw canvases on top of panel backgrounds
+  canvases.forEach(cv=>{
+    if(!cv||cv.width<2) return;
+    try{const r=cv.getBoundingClientRect();ctx.drawImage(cv,r.left,r.top,r.width,r.height);}catch(e){}
+  });
+
+  dl(out.toDataURL('image/png'),'bonfire_app.png');notify('App PNG exported');
 }
 
 function exportTIF(){
-  // Export current active cube as multi-frame TIFF (float32, uncompressed, [T,Y,X])
-  const cube=activeCube(); if(!cube) return;
+  // Export de-duped cube as multi-frame little-endian float32 TIFF
+  if(!S.tUnique) return;
   const{nT,nY,nX}=S;
-  // Build minimal TIFF: one IFD per frame, float32, little-endian
-  const bytesPerPx=4; // float32
+  const bytesPerPx=4;
   const stripBytes=nY*nX*bytesPerPx;
-  const ifdSize=2+12*11+4; // entry count(2) + 11 tags * 12 bytes + next IFD offset(4)
+  // IFD: 2 bytes count + 11 tags × 12 bytes + 4 bytes next IFD = 142 bytes
+  const ifdSize=2+11*12+4;
   const headerSize=8;
-  // IFDs come right after header, then pixel data
   const ifdStart=headerSize;
-  const ifdTotalSize=ifdSize*nT;
-  const dataStart=ifdStart+ifdTotalSize;
+  const dataStart=ifdStart+ifdSize*nT;
   const totalSize=dataStart+stripBytes*nT;
 
   const buf=new ArrayBuffer(totalSize);
   const view=new DataView(buf);
-  const u8=new Uint8Array(buf);
 
-  // Header: little-endian ('II'), magic 42, offset to first IFD
-  view.setUint8(0,0x49);view.setUint8(1,0x49); // 'II'
+  // TIFF header: little-endian
+  view.setUint8(0,0x49);view.setUint8(1,0x49);
   view.setUint16(2,42,true);
   view.setUint32(4,ifdStart,true);
 
@@ -1276,35 +1503,35 @@ function exportTIF(){
     const pixOff=dataStart+fi*stripBytes;
     const nextIFD=fi<nT-1?ifdStart+(fi+1)*ifdSize:0;
 
-    // Write 11 IFD entries
-    view.setUint16(ifdOff,11,true); // entry count
+    view.setUint16(ifdOff,11,true); // 11 IFD entries
     let e=ifdOff+2;
+    // Tags MUST be in ascending order
     function tag(t,tp,cnt,val){
       view.setUint16(e,t,true);view.setUint16(e+2,tp,true);view.setUint32(e+4,cnt,true);
       view.setUint32(e+8,val,true);e+=12;
     }
-    tag(256,3,1,nX);         // ImageWidth
-    tag(257,3,1,nY);         // ImageLength
+    tag(256,3,1,nX);         // ImageWidth (SHORT)
+    tag(257,3,1,nY);         // ImageLength (SHORT)
     tag(258,3,1,32);         // BitsPerSample = 32
-    tag(259,3,1,1);          // Compression = none
-    tag(262,3,1,1);          // PhotometricInterp = BlackIsZero
-    tag(273,4,1,pixOff);     // StripOffsets
+    tag(259,3,1,1);          // Compression = 1 (none)
+    tag(262,3,1,1);          // PhotometricInterpretation = 1 (BlackIsZero)
+    tag(273,4,1,pixOff);     // StripOffsets (LONG)
     tag(278,3,1,nY);         // RowsPerStrip
-    tag(279,4,1,stripBytes); // StripByteCounts
-    tag(284,3,1,1);          // PlanarConfig = chunky
-    tag(339,3,1,3);          // SampleFormat = 3 (IEEE float)
-    tag(296,3,1,1);          // ResolutionUnit = no abs unit (tag order must be sorted by tag number)
+    tag(279,4,1,stripBytes); // StripByteCounts (LONG)
+    tag(284,3,1,1);          // PlanarConfiguration = 1 (chunky)
+    tag(296,3,1,1);          // ResolutionUnit = 1 (no absolute unit) — tag 296 < 339
+    tag(339,3,1,3);          // SampleFormat = 3 (IEEE float) — tag 339 last
     view.setUint32(e,nextIFD,true); // next IFD offset
 
-    // Pixel data (float32)
-    const slice=frameSlice(cube,fi);
-    const f32=new Float32Array(buf,pixOff,nY*nX);
-    for(let i=0;i<nY*nX;i++) f32[i]=slice[i];
+    // Write pixel data as float32
+    const f32view=new Float32Array(buf,pixOff,nY*nX);
+    const srcOff=fi*nY*nX;
+    for(let i=0;i<nY*nX;i++) f32view[i]=S.tUnique[srcOff+i];
   }
 
   const blob=new Blob([buf],{type:'image/tiff'});
   dl(URL.createObjectURL(blob),`bonfire_CH${S.ch}_stack.tif`);
-  notify(`TIF exported: ${nT} frames`);
+  notify(`TIF exported: ${nT} frames (de-duped)`);
 }
 
 function exportSpecCSV(){
@@ -1317,16 +1544,12 @@ function exportSpecCSV(){
   dlTxt(rows.join('\n'),'bonfire_spectrum.csv');notify('Spectrum CSV exported');
 }
 
-function exportSpecPNG(){
-  dl(document.getElementById('traceChart').toDataURL('image/png'),'bonfire_spectrum.png');notify('Spectrum PNG exported');
-}
-
 function dl(dataUrl,name){const a=document.createElement('a');a.href=dataUrl;a.download=name;a.click();}
 function dlTxt(txt,name){const b=new Blob([txt],{type:'text/csv'});dl(URL.createObjectURL(b),name);}
 
-// ═══════════════════════════════
+// ═══════════════════════════════════════════════════════════
 // NOTIFY
-// ═══════════════════════════════
+// ═══════════════════════════════════════════════════════════
 let _nt;
 function notify(msg){
   const el=document.getElementById('notif');
@@ -1334,12 +1557,10 @@ function notify(msg){
   clearTimeout(_nt);_nt=setTimeout(()=>el.classList.remove('on'),2600);
 }
 
-// ═══════════════════════════════
+// ═══════════════════════════════════════════════════════════
 // INIT
-// ═══════════════════════════════
-renderSpecList();
-renderDatasetList();
-// Reposition ROI canvas on window resize
+// ═══════════════════════════════════════════════════════════
+renderSpecList();renderDatasetList();
 window.addEventListener('resize',()=>{if(activeCube()) positionRoiCanvas();});
 </script>
 </body>
