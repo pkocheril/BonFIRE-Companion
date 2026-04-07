@@ -230,7 +230,9 @@ input.freq-val:focus{border-color:var(--accent);}
       </div>
       <div class="cg"><span class="cl">Zoom</span>
         <select class="ctl" id="zmSel" onchange="renderImg()">
-          <option value="4">4×</option><option value="8">8×</option>
+          <option value="0.1">0.1×</option><option value="0.25">0.25×</option>
+          <option value="0.5">0.5×</option><option value="1">1×</option>
+          <option value="2">2×</option><option value="4">4×</option><option value="8">8×</option>
           <option value="16" selected>16×</option><option value="32">32×</option><option value="64">64×</option>
         </select>
       </div>
@@ -274,6 +276,9 @@ input.freq-val:focus{border-color:var(--accent);}
           <select class="ctl" id="logSel" onchange="updateTrace()">
             <option value="lin">Linear</option><option value="log">Log</option>
           </select>
+        </div>
+        <div class="cg">
+          <button class="sm-btn" id="normTraceBtn" onclick="toggleNormTrace()">Norm</button>
         </div>
       </div>
       <!-- Spectrum trace controls -->
@@ -423,7 +428,7 @@ const S={
   specRetained:[],
   // Dataset registry
   datasets:[], activeDs:null,
-  specPoints:[], normalizeIR:false, sbTab:'files',
+  specPoints:[], normalizeIR:false, normalizeTrace:false, sbTab:'files',
 };
 
 // Live trace color cycles through PAL starting at index 1, so it's never same as first retained (index 0)
@@ -813,21 +818,41 @@ function renderSpecImg(){
 }
 
 function paintCanvas(pxd,mn,mx,nY,nX,zoom,cm){
-  const W=nX*zoom,H=nY*zoom;
+  // For zoom >= 1: each data pixel maps to zoom×zoom screen pixels (integer upscale).
+  // For zoom < 1: we render at 1px per data pixel then CSS-scale down, keeping pixelated look.
   const imgCv=document.getElementById('imgCanvas');
-  imgCv.width=W; imgCv.height=H;
-  const ctx=imgCv.getContext('2d');
-  const img=ctx.createImageData(W,H);
   const range=mx-mn||1;
-  for(let y=0;y<nY;y++) for(let x=0;x<nX;x++){
-    const v=(pxd[y*nX+x]-mn)/range;
-    const[r,g,b]=mapColor(v,cm);
-    for(let dy=0;dy<zoom;dy++) for(let dx=0;dx<zoom;dx++){
-      const p=((y*zoom+dy)*W+(x*zoom+dx))*4;
+  if(zoom>=1){
+    const zInt=Math.round(zoom);
+    const W=nX*zInt,H=nY*zInt;
+    imgCv.width=W;imgCv.height=H;
+    const ctx=imgCv.getContext('2d');
+    const img=ctx.createImageData(W,H);
+    for(let y=0;y<nY;y++) for(let x=0;x<nX;x++){
+      const v=(pxd[y*nX+x]-mn)/range;
+      const[r,g,b]=mapColor(v,cm);
+      for(let dy=0;dy<zInt;dy++) for(let dx=0;dx<zInt;dx++){
+        const p=((y*zInt+dy)*W+(x*zInt+dx))*4;
+        img.data[p]=r|0;img.data[p+1]=g|0;img.data[p+2]=b|0;img.data[p+3]=255;
+      }
+    }
+    ctx.putImageData(img,0,0);
+    imgCv.style.width='';imgCv.style.height='';
+  } else {
+    // Render at native pixel size, scale down via CSS
+    imgCv.width=nX;imgCv.height=nY;
+    const ctx=imgCv.getContext('2d');
+    const img=ctx.createImageData(nX,nY);
+    for(let y=0;y<nY;y++) for(let x=0;x<nX;x++){
+      const v=(pxd[y*nX+x]-mn)/range;
+      const[r,g,b]=mapColor(v,cm);
+      const p=(y*nX+x)*4;
       img.data[p]=r|0;img.data[p+1]=g|0;img.data[p+2]=b|0;img.data[p+3]=255;
     }
+    ctx.putImageData(img,0,0);
+    imgCv.style.width=Math.round(nX*zoom)+'px';
+    imgCv.style.height=Math.round(nY*zoom)+'px';
   }
-  ctx.putImageData(img,0,0);
   paintColorbar(mn,mx,cm);
   positionRoiCanvas();drawROI();
 }
@@ -866,7 +891,7 @@ function positionRoiCanvas(){
 // ═══════════════════════════════════════════════════════════
 // ROI DRAWING
 // ═══════════════════════════════════════════════════════════
-function getZoom(){return parseInt(document.getElementById('zmSel').value);}
+function getZoom(){return parseFloat(document.getElementById('zmSel').value);}
 function evtToPx(e){
   const rect=e.target.getBoundingClientRect(),zoom=getZoom();
   return{px:Math.floor((e.clientX-rect.left)/zoom),py:Math.floor((e.clientY-rect.top)/zoom)};
@@ -905,8 +930,12 @@ function drawROI(){
   ctx.clearRect(0,0,roiCv.width,roiCv.height);
   if(!S.roi) return;
   const zoom=getZoom(),{x1,y1,x2,y2}=S.roi;
-  const rx=x1*zoom,ry=y1*zoom,rw=(x2-x1+1)*zoom,rh=(y2-y1+1)*zoom;
-  ctx.strokeStyle='#a78bfa';ctx.lineWidth=1.5;ctx.setLineDash([3,2]);
+  // roiCanvas dimensions match imgCanvas CSS display size (set in positionRoiCanvas)
+  // For zoom >= 1 the canvas px = display px; for zoom < 1 we scaled via CSS,
+  // so we draw in canvas (data-pixel) space and let CSS scaling handle the rest.
+  const zDraw=zoom>=1?Math.round(zoom):1; // canvas pixels per data pixel when zoom<1 we already have 1:1
+  const rx=x1*zDraw,ry=y1*zDraw,rw=(x2-x1+1)*zDraw,rh=(y2-y1+1)*zDraw;
+  ctx.strokeStyle='#a78bfa';ctx.lineWidth=Math.max(1,1/zoom);ctx.setLineDash([3,2]);
   ctx.strokeRect(rx+.5,ry+.5,rw-1,rh-1);
   ctx.fillStyle='rgba(167,139,250,.09)';ctx.fillRect(rx+.5,ry+.5,rw-1,rh-1);
 }
@@ -1065,11 +1094,25 @@ function buildXY(){
 }
 function xLabel(){const m=document.getElementById('xaxSel').value;return m==='ps'?'Delay (ps)':m==='mm'?'Stage (mm)':'Frame index';}
 
+function toggleNormTrace(){
+  S.normalizeTrace=!S.normalizeTrace;
+  document.getElementById('normTraceBtn').classList.toggle('go',S.normalizeTrace);
+  updateTrace();
+  notify('Trace normalization: '+(S.normalizeTrace?'ON':'OFF'));
+}
+
+function normSeries(ys){
+  if(!S.normalizeTrace) return ys;
+  const mx=Math.max(...ys.map(Math.abs));
+  return mx>0?ys.map(v=>v/mx):ys;
+}
+
 function updateTrace(){
   if(S.mode==='spectrum'){updateSpecTrace();return;}
   const res=buildXY(); if(!res) return;
   const{xs,ys}=res;
   const useLog=document.getElementById('logSel').value==='log';
+  const liveYs=normSeries(ys);
   const liveColor=PAL[0]; // always purple for live
 
   // Vertical line annotation for current frame
@@ -1077,8 +1120,8 @@ function updateTrace(){
   const curX=xs[fi];
 
   const live={
-    label:`CH${S.ch} (live)`,
-    data:xs.map((x,i)=>({x,y:ys[i]})),
+    label:`CH${S.ch} (live)${S.normalizeTrace?' [norm]':''}`,
+    data:xs.map((x,i)=>({x,y:liveYs[i]})),
     borderColor:liveColor,backgroundColor:liveColor+'22',
     borderWidth:1.5,pointRadius:S.nT>60?2:3,
     pointHoverRadius:5,fill:true,tension:.3,order:0,
@@ -1086,7 +1129,7 @@ function updateTrace(){
 
   // Current frame vertical line as a dataset with a single point + custom plugin
   const retDS=S.retained.map((r,i)=>({
-    label:r.label,data:r.xs.map((x,j)=>({x,y:r.ys[j]})),
+    label:r.label,data:r.xs.map((x,j)=>({x,y:normSeries(r.ys)[j]})),
     borderColor:PAL[(i+1)%PAL.length],backgroundColor:PAL[(i+1)%PAL.length]+'18',
     borderWidth:1.5,pointRadius:0,fill:false,tension:.3,order:i+1,
   }));
@@ -1119,7 +1162,7 @@ function updateTrace(){
       scales:{
         x:{type:'linear',title:{display:true,text:xLabel(),color:'#525870',font:{family:'Space Mono',size:9}},
            ticks:{color:'#525870',font:{family:'Space Mono',size:8}},grid:{color:'#1f2035'}},
-        y:{type:useLog?'logarithmic':'linear',title:{display:true,text:'Signal (a.u.)',color:'#525870',font:{family:'Space Mono',size:9}},
+        y:{type:useLog?'logarithmic':'linear',title:{display:true,text:S.normalizeTrace?'Signal (normalized)':'Signal (a.u.)',color:'#525870',font:{family:'Space Mono',size:9}},
            ticks:{color:'#525870',font:{family:'Space Mono',size:8}},grid:{color:'#1f2035'}},
       }
     }
@@ -1306,7 +1349,7 @@ function renderIRPowerPlot(){
 // METADATA
 // ═══════════════════════════════════════════════════════════
 const META_ROWS=[
-  ['Date','Date'],['Time','Time'],['Probe_wl','Probe λ (nm)'],['DFG_wn','DFG (cm⁻¹)'],
+  ['Probe_wl','Probe λ (nm)'],['DFG_wn','DFG (cm⁻¹)'],
   ['Idler_wn','Idler (cm⁻¹)'],['IR_power (mW)','IR power (mW)'],
   ['Probe_power','Probe power (μW)'],['Dwell time (ms)','Dwell (ms)'],
   ['NDfilter','ND filter'],['Concentration (uM)','Conc. (μM)'],

@@ -30,7 +30,7 @@ In the time trace view, the drop-down options at the top-left allow you to choos
 To compare time traces, you can press the "Retain" button at the top right of that pane, then select a different ROI in your image and compare the two. Make sure you're using the ROI average instead of averaging all pixels to make this comparison. The live plot will update with the ROI, but the 'retained' plot stays put until you clear it ("Clear all").
 
 ### Sweep analysis
-To analyze BonFIRE sweeps, you can drag an entire folder containing a series of BonFIRE measurement files (CH1.raw, CH2.raw, Tlist, and XYZT) into the "Drop files or folder" input window. Upon receiving a folder, the app will default to spectrum analysis, where the data are combined into a single graph of BonFIRE intensity vs IR frequency *(currently only IR frequency - other independent variables planned in the future!)*.
+To analyze BonFIRE sweeps, you can drag an entire folder containing a series of BonFIRE measurement files (CH1.raw, CH2.raw, Tlist, and XYZT) into the "Drop files or folder" input window. Upon receiving a folder *(not currently working on Windows)*, the app should default to spectrum analysis, where the data are combined into a single graph of BonFIRE intensity vs IR frequency *(currently only IR frequency - other independent variables planned in the future!)*. Alternatively, you can drag and drop multiple files in, then switch to the "Spectrum" tab and press "Build from all datasets" to generate a spectrum from all loaded files.
 
 If you select the "Files" tab on the left, you can see the individual files that comprise the spectrum and click on a file to view that individual image stack and time trace. You can then click on different files to switch between them.
 
